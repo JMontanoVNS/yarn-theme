@@ -1,0 +1,2 @@
+[environments.development]
+store = "https://j-montano-dev.myshopify.com/"
