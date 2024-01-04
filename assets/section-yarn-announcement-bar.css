@@ -1,6 +1,5 @@
 .border-radius {
-    border-radius: 20px;
-    border: 2px solid red;
+    border-radius: var(--radius-value);
 }
 
 @media screen and (max-width: 749px) {
