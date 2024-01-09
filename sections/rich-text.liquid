@@ -24,6 +24,10 @@
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
+            {%- when 'pill' -%}
+              <div style="display: inline-block; background-color: {{ block.settings.pill_color }}; border-radius: {{ block.settings.pill_radius }}px; padding: {{ block.settings.pill_y_padding }}px {{ block.settings.pill_x_padding }}px;">
+                <p style="margin: 0; color: {{ block.settings.pill_text_color }}; font-size: {{ block.settings.pill_font_size }}px; line-height: 18px;">{{ block.settings.pill_text }}</p>
+              </div>
             {%- when 'heading' -%}
               <h2
                 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -176,12 +180,81 @@
     ],
     "blocks": [
       {
+        "type": "pill",
+        "name": "Title pill",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "pill_text",
+            "default": "Talk about your brand",
+            "label": "Pill text"
+          },
+          {
+            "type": "range",
+            "id": "pill_font_size",
+            "default": 1,
+            "min": 1,
+            "max": 45,
+            "step": 1,
+            "unit": "px",
+            "label": "Font size"
+          },
+          {
+            "type": "range",
+            "id": "pill_font_weight",
+            "default": 200,
+            "min": 100,
+            "max": 900,
+            "step": 100,
+            "unit": "px",
+            "label": "Font weight"
+          },
+          {
+            "type": "color",
+            "id": "pill_color",
+            "label": "Pill color"
+          }, {
+            "type": "color",
+            "id": "pill_text_color",
+            "label": "Pill text color"
+          }, {
+            "type": "range",
+            "id": "pill_radius",
+            "default": 0,
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "unit": "px",
+            "label": "Pill border radius"
+          }, {
+            "type": "range",
+            "id": "pill_x_padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Pill padding X-axis"
+          }, {
+            "type": "range",
+            "id": "pill_y_padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Pill padding Y-axis"
+          }
+        ]
+      },
+      {
         "type": "heading",
         "name": "t:sections.rich-text.blocks.heading.name",
         "limit": 3,
         "settings": [
           {
-            "type": "inline_richtext",
+            "type": "richtext",
             "id": "heading",
             "default": "Talk about your brand",
             "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
@@ -207,7 +280,8 @@
             "label": "t:sections.all.heading_size.label"
           }
         ]
-      }, {
+      },
+      {
         "type": "caption",
         "name": "t:sections.rich-text.blocks.caption.name",
         "limit": 3,
@@ -250,7 +324,8 @@
             "label": "t:sections.rich-text.blocks.caption.settings.caption_size.label"
           }
         ]
-      }, {
+      },
+      {
         "type": "text",
         "name": "t:sections.rich-text.blocks.text.name",
         "limit": 3,

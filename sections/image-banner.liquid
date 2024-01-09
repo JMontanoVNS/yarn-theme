@@ -105,7 +105,10 @@
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
-            <h2 class="banner__heading inline-richtext {{ block.settings.heading_size }}" {{ block.shopify_attributes }}>
+            <h2
+              style="width: {{ block.settings.heading_width }}px; height: {{ block.settings.heading_height }}px; font-size: {{ block.settings.heading_font_size }}rem; color: {{ block.settings.heading_color }};"
+              class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+              {{ block.shopify_attributes }}>
               {{ block.settings.heading }}
             </h2>
           {%- when 'text' -%}
@@ -113,9 +116,13 @@
               <p>{{ block.settings.text }}</p>
             </div>
           {%- when 'buttons' -%}
-            <div class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}" {{ block.shopify_attributes }}>
+            <div
+              style="background: {{ block.settings.button_color }}; border-radius: {{ block.settings.button_radius }}px; padding: {{ block.settings.button_y_padding }}px {{ block.settings.button_x_padding }}px;"
+              class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
+              {{ block.shopify_attributes }}>
               {%- if block.settings.button_label_1 != blank -%}
                 <a
+                  style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }};"
                   {% if block.settings.button_link_1 == blank %}
                   role="link"
                   aria-disabled="true"
@@ -335,7 +342,8 @@
             "id": "heading",
             "default": "Image banner",
             "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
-          }, {
+          },
+          {
             "type": "select",
             "id": "heading_size",
             "options": [
@@ -352,6 +360,39 @@
             ],
             "default": "h1",
             "label": "t:sections.all.heading_size.label"
+          },
+          {
+            "type": "range",
+            "id": "heading_font_size",
+            "default": 1,
+            "min": 1,
+            "max": 5,
+            "step": 0.1,
+            "unit": "rem",
+            "label": "Font size"
+          },
+          {
+            "type": "range",
+            "id": "heading_width",
+            "default": 480,
+            "min": 250,
+            "max": 1000,
+            "step": 10,
+            "unit": "px",
+            "label": "Heading width"
+          }, {
+            "type": "range",
+            "id": "heading_height",
+            "default": 400,
+            "min": 100,
+            "max": 600,
+            "step": 10,
+            "unit": "px",
+            "label": "Heading height"
+          }, {
+            "type": "color",
+            "id": "heading_color",
+            "label": "Heading color"
           }
         ]
       }, {
@@ -421,6 +462,63 @@
             "id": "button_style_secondary_2",
             "default": false,
             "label": "t:sections.image-banner.blocks.buttons.settings.button_style_secondary_2.label"
+          }, {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#F7C156"
+          }, {
+            "type": "color",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
+          }, {
+            "type": "select",
+            "id": "button_font_weight",
+            "label": "Button text weight",
+            "default": "normal",
+            "options": [
+              {
+                "value": "lighter",
+                "label": "Lighter"
+              }, {
+                "value": "normal",
+                "label": "Normal"
+              }, {
+                "value": "bold",
+                "label": "Bold"
+              }, {
+                "value": "bolder",
+                "label": "Bolder"
+              }
+            ]
+          }, {
+            "type": "range",
+            "id": "button_radius",
+            "default": 0,
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "unit": "px",
+            "label": "Button radius"
+          }, {
+            "type": "range",
+            "id": "button_x_padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button padding X-axis"
+          }, {
+            "type": "range",
+            "id": "button_y_padding",
+            "default": 0,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button padding Y-axis"
           }
         ]
       }
