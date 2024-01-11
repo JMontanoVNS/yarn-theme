@@ -69,10 +69,25 @@
             "pill_x_padding": 12,
             "pill_y_padding": 8
           }
+        },
+        "heading_prLPna": {
+          "type": "heading",
+          "settings": {
+            "heading_block_1": "Add your logo",
+            "heading_block_color_1": "#9D2B2B",
+            "heading_block_2": "to our quality products through our host of printing options, or source a one-of-a-kind design for your company.",
+            "heading_block_color_2": "#000000",
+            "heading_block_3": "We’ll help you realise your concept!",
+            "heading_block_color_3": "#9D2B2B",
+            "heading_font_weight": "bold",
+            "heading_font_size": 28,
+            "heading_line_height": 40
+          }
         }
       },
       "block_order": [
-        "pill_HDKbi8"
+        "pill_HDKbi8",
+        "heading_prLPna"
       ],
       "settings": {
         "desktop_content_position": "center",
