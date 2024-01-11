@@ -25,9 +25,10 @@
         "7d025593-adea-4881-bcd1-aee97ec6e30d"
       ],
       "settings": {
-        "radius_range": 0,
+        "radius_range": 20,
+        "bar_height": 52,
         "color_scheme": "scheme-6a0c4fad-0215-4114-a74a-db8b19b24603",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "show_social": true,
         "auto_rotate": false,
         "change_slides_speed": 5,
@@ -39,18 +40,19 @@
       "type": "header",
       "settings": {
         "logo_position": "middle-left",
+        "font_weight": "bold",
         "menu": "main-menu",
         "menu_type_desktop": "dropdown",
         "sticky_header_type": "on-scroll-up",
-        "show_line_separator": true,
+        "show_line_separator": false,
         "color_scheme": "background-1",
         "menu_color_scheme": "background-1",
-        "enable_country_selector": true,
-        "enable_language_selector": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
         "mobile_logo_position": "center",
         "margin_bottom": 0,
-        "padding_top": 20,
-        "padding_bottom": 20
+        "padding_top": 16,
+        "padding_bottom": 16
       }
     }
   },
