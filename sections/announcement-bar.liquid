@@ -19,11 +19,33 @@
   {{ 'component-list-social.css' | asset_url | stylesheet_tag }}
 {% endif %}
 
-<div
-  style="--radius-value: {{ section.settings.radius_range }}px;"
-  class="border-radius utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}"
-  {{ block.shopify_attributes }}>
-  <div class="page-width utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
+{% style %}
+  .announcement-container {
+    border-radius: {{ section.settings.radius_range }}px;
+    height: {{ section.settings.bar_height }}px;
+    padding: 0 2.84% 0 1.91%;
+  }
+
+  .bar-content {
+    line-height: {{ section.settings.bar_height }}px;
+    margin: 0;
+    padding-left: 0.92%;
+  }
+
+  .localization-selects {
+    padding-right: o;
+    border: 2px solid pink;
+  }
+
+  @media screen and (max-width: 749px) {
+    .announcement-container {
+      border-radius: 0;
+    }
+  }
+{% endstyle %}
+
+<div class="announcement-container utility-bar color-{{ section.settings.color_scheme }} gradient{% if section.settings.show_line_separator and section.blocks.size > 0 %} utility-bar--bottom-border{% elsif section.settings.show_line_separator and section.settings.show_social and social_icons%} utility-bar--bottom-border-social-only{% endif %}{% if section.settings.enable_country_selector or section.settings.enable_language_selector %} header-localization{% endif %}" {{ block.shopify_attributes }}>
+  <div class="bar-content utility-bar__grid{% if announcement_bar and language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--3-col{% elsif language_country_selector or section.settings.show_social and social_icons %} utility-bar__grid--2-col{% endif %}">
     {%- if section.settings.show_social and social_icons -%}
       {%- render 'social-icons' -%}
     {%- endif -%}
@@ -226,6 +248,16 @@
         "default": 0
       },
       {
+        "type": "range",
+        "id": "bar_height",
+        "default": 52,
+        "min": 0,
+        "max": 100,
+        "step": 2,
+        "unit": "px",
+        "label": "Bar height"
+      },
+      {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
@@ -236,8 +268,7 @@
         "id": "show_line_separator",
         "default": true,
         "label": "t:sections.header.settings.show_line_separator.label"
-      },
-      {
+      }, {
         "type": "header",
         "content": "t:sections.announcement-bar.settings.header__1.content",
         "info": "t:sections.announcement-bar.settings.header__1.info"

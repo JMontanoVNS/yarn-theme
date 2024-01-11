@@ -18,26 +18,25 @@
   }
 {%- endstyle -%}
 
-<div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+<div style="margin: 0 8.61%; margin-top: 13.58%;" class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
   <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
-    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+    <div style="padding-bottom: 8.95%" class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'pill' -%}
-              <div style="display: inline-block; background-color: {{ block.settings.pill_color }}; border-radius: {{ block.settings.pill_radius }}px; padding: {{ block.settings.pill_y_padding }}px {{ block.settings.pill_x_padding }}px;">
-                <p style="margin: 0; color: {{ block.settings.pill_text_color }}; font-size: {{ block.settings.pill_font_size }}px; line-height: 18px;">{{ block.settings.pill_text }}</p>
+              <div style="display: inline-block; background-color: {{ block.settings.pill_color }}; border-radius: {{ block.settings.pill_radius }}px; padding: 1.63% {{ block.settings.pill_x_padding }}px;">
+                <p style="margin: 0; color: {{ block.settings.pill_text_color }}; font-size: {{ block.settings.pill_font_size }}px;">{{ block.settings.pill_text }}</p>
               </div>
             {%- when 'heading' -%}
-              <h2
-                class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-                {% endif %}>
-                {{ block.settings.heading }}
-              </h2>
+              {% comment %} <h2 class="color-text rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"{{ block.shopify_attributes }}{% if settings.animations_reveal_on_scroll %}data-cascadestyle="--animation-order: {{ forloop.index }}; font-weight: {{ block.settings.heading_font_weight }};font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_line_height }}px;"{% endif %}>{{ block.settings.heading }}</h2> {% endcomment %}
+              <p style="font-weight: {{ block.settings.heading_font_weight }}; font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_line_height }}px;">
+                <span style="color: {{ block.settings.heading_block_color_1 }}">{{ block.settings.heading_block_1 }}</span>
+                <span style="color: {{ block.settings.heading_block_color_2 }}">{{ block.settings.heading_block_2 }}</span>
+                <span style="color: {{ block.settings.heading_block_color_3 }}">{{ block.settings.heading_block_3 }}</span>
+              </p>
+
+
             {%- when 'caption' -%}
               <p
                 class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -125,8 +124,7 @@
         "default": "center",
         "label": "t:sections.rich-text.settings.desktop_content_position.label",
         "info": "t:sections.rich-text.settings.desktop_content_position.info"
-      },
-      {
+      }, {
         "type": "select",
         "id": "content_alignment",
         "options": [
@@ -143,39 +141,16 @@
         ],
         "default": "center",
         "label": "t:sections.rich-text.settings.content_alignment.label"
-      },
-      {
+      }, {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
         "default": "background-1"
-      },
-      {
+      }, {
         "type": "checkbox",
         "id": "full_width",
         "default": true,
         "label": "t:sections.rich-text.settings.full_width.label"
-      }, {
-        "type": "header",
-        "content": "t:sections.all.padding.section_padding_heading"
-      }, {
-        "type": "range",
-        "id": "padding_top",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_top",
-        "default": 40
-      }, {
-        "type": "range",
-        "id": "padding_bottom",
-        "min": 0,
-        "max": 100,
-        "step": 4,
-        "unit": "px",
-        "label": "t:sections.all.padding.padding_bottom",
-        "default": 52
       }
     ],
     "blocks": [
@@ -254,30 +229,79 @@
         "limit": 3,
         "settings": [
           {
-            "type": "richtext",
-            "id": "heading",
+            "type": "header",
+            "content": "Text block 1"
+          },
+          {
+            "type": "textarea",
+            "id": "heading_block_1",
             "default": "Talk about your brand",
-            "label": "t:sections.rich-text.blocks.heading.settings.heading.label"
+            "label": "Text"
+          },
+          {
+            "type": "color",
+            "id": "heading_block_color_1",
+            "default": "#9D2B2B",
+            "label": "Text color"
+          },
+          {
+            "type": "header",
+            "content": "Text block 2"
+          }, {
+            "type": "textarea",
+            "id": "heading_block_2",
+            "default": "Talk about your brand",
+            "label": "Text"
+          }, {
+            "type": "color",
+            "id": "heading_block_color_2",
+            "default": "#000000",
+            "label": "Text color"
+          }, {
+            "type": "header",
+            "content": "Text block 3"
+          }, {
+            "type": "textarea",
+            "id": "heading_block_3",
+            "default": "Talk about your brand",
+            "label": "Text"
+          }, {
+            "type": "color",
+            "id": "heading_block_color_3",
+            "default": "#9D2B2B",
+            "label": "Text color"
           }, {
             "type": "select",
-            "id": "heading_size",
+            "id": "heading_font_weight",
             "options": [
               {
-                "value": "h2",
-                "label": "t:sections.all.heading_size.options__1.label"
+                "value": "normal",
+                "label": "Normal"
               }, {
-                "value": "h1",
-                "label": "t:sections.all.heading_size.options__2.label"
-              }, {
-                "value": "h0",
-                "label": "t:sections.all.heading_size.options__3.label"
-              }, {
-                "value": "hxl",
-                "label": "t:sections.all.heading_size.options__4.label"
+                "value": "bold",
+                "label": "Bold"
               }
             ],
-            "default": "h1",
-            "label": "t:sections.all.heading_size.label"
+            "default": "bold",
+            "label": "Heading font weight"
+          }, {
+            "type": "range",
+            "id": "heading_font_size",
+            "default": 28,
+            "label": "Heading font size",
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "unit": "px"
+          }, {
+            "type": "range",
+            "id": "heading_line_height",
+            "default": 40,
+            "label": "Heading line height",
+            "min": 28,
+            "max": 70,
+            "step": 2,
+            "unit": "px"
           }
         ]
       },

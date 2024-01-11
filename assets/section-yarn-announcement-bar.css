@@ -1,9 +1,0 @@
-.border-radius {
-    border-radius: var(--radius-value);
-}
-
-@media screen and (max-width: 749px) {
-    .border-radius {
-        border-radius: 0px;
-    }
-  }

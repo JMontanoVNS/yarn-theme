@@ -35,6 +35,10 @@
   .banner__media::after {
     border-radius: {{ section.settings.radius_range }}px;
   }
+
+  .banner {
+    height: {{ section.settings.banner_image_height }}px;
+  }
 {%- endstyle -%}
 
 {%- liquid
@@ -55,7 +59,7 @@
   endif
 -%}
 
-<div id="Banner-{{ section.id }}" class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+<div id="Banner-{{ section.id }}" class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} {% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {%- if section.settings.image != blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
@@ -100,14 +104,14 @@
       }}
     </div>
   {%- endif -%}
-  <div class="banner__content banner__content--{{ section.settings.desktop_content_position }} page-width{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <div class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+  <div style="padding: {{ section.settings.image_padding_top }}px {{ section.settings.image_padding_right }}px {{ section.settings.image_padding_bottom }}px {{ section.settings.image_padding_left }}px;" class="banner__content banner__content--{{ section.settings.desktop_content_position }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+    <div style="padding: 0; width: 35.5%;" class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'heading' -%}
             <h2
-              style="width: {{ block.settings.heading_width }}px; height: {{ block.settings.heading_height }}px; font-size: {{ block.settings.heading_font_size }}rem; color: {{ block.settings.heading_color }};"
-              class="banner__heading inline-richtext {{ block.settings.heading_size }}"
+              style="color: {{ block.settings.heading_color }}; font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_font_line_height }}px;"
+              class="banner__heading inline-richtext"
               {{ block.shopify_attributes }}>
               {{ block.settings.heading }}
             </h2>
@@ -117,12 +121,12 @@
             </div>
           {%- when 'buttons' -%}
             <div
-              style="background: {{ block.settings.button_color }}; border-radius: {{ block.settings.button_radius }}px; padding: {{ block.settings.button_y_padding }}px {{ block.settings.button_x_padding }}px;"
+              style="background: {{ block.settings.button_color }}; border-radius: {{ block.settings.button_radius }}px; padding: {{ block.settings.button_y_padding }}px {{ block.settings.button_x_padding }}px; height: {{ block.settings.button_height }}px; margin-top: {{ block.settings.button_margin_top }}px;"
               class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
               {{ block.shopify_attributes }}>
               {%- if block.settings.button_label_1 != blank -%}
                 <a
-                  style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }};"
+                  style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }}; padding: 0"
                   {% if block.settings.button_link_1 == blank %}
                   role="link"
                   aria-disabled="true"
@@ -162,16 +166,6 @@
     },
     "settings": [
       {
-        "type": "range",
-        "id": "radius_range",
-        "label": "Image border-radius value",
-        "min": 0,
-        "max": 50,
-        "step": 5,
-        "unit": "px",
-        "default": 0
-      },
-      {
         "type": "image_picker",
         "id": "image",
         "label": "t:sections.image-banner.settings.image.label"
@@ -183,6 +177,25 @@
       },
       {
         "type": "range",
+        "id": "radius_range",
+        "label": "Image border-radius value",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "banner_image_height",
+        "label": "Banner image height",
+        "min": 500,
+        "max": 900,
+        "step": 20,
+        "unit": "px",
+        "default": 760
+      }, {
+        "type": "range",
         "id": "image_overlay_opacity",
         "min": 0,
         "max": 100,
@@ -191,26 +204,41 @@
         "label": "t:sections.image-banner.settings.image_overlay_opacity.label",
         "default": 0
       }, {
-        "type": "select",
-        "id": "image_height",
-        "options": [
-          {
-            "value": "adapt",
-            "label": "t:sections.image-banner.settings.image_height.options__1.label"
-          }, {
-            "value": "small",
-            "label": "t:sections.image-banner.settings.image_height.options__2.label"
-          }, {
-            "value": "medium",
-            "label": "t:sections.image-banner.settings.image_height.options__3.label"
-          }, {
-            "value": "large",
-            "label": "t:sections.image-banner.settings.image_height.options__4.label"
-          }
-        ],
-        "default": "medium",
-        "label": "t:sections.image-banner.settings.image_height.label",
-        "info": "t:sections.image-banner.settings.image_height.info"
+        "type": "range",
+        "id": "image_padding_top",
+        "label": "Image container top padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "image_padding_right",
+        "label": "Image container right padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "image_padding_bottom",
+        "label": "Image container bottom padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "image_padding_left",
+        "label": "Image container left padding",
+        "min": 0,
+        "max": 150,
+        "step": 2,
+        "unit": "px",
+        "default": 108
       }, {
         "type": "select",
         "id": "desktop_content_position",
@@ -342,53 +370,24 @@
             "id": "heading",
             "default": "Image banner",
             "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
-          },
-          {
-            "type": "select",
-            "id": "heading_size",
-            "options": [
-              {
-                "value": "h2",
-                "label": "t:sections.all.heading_size.options__1.label"
-              }, {
-                "value": "h1",
-                "label": "t:sections.all.heading_size.options__2.label"
-              }, {
-                "value": "h0",
-                "label": "t:sections.all.heading_size.options__3.label"
-              }
-            ],
-            "default": "h1",
-            "label": "t:sections.all.heading_size.label"
-          },
-          {
-            "type": "range",
-            "id": "heading_font_size",
-            "default": 1,
-            "min": 1,
-            "max": 5,
-            "step": 0.1,
-            "unit": "rem",
-            "label": "Font size"
-          },
-          {
-            "type": "range",
-            "id": "heading_width",
-            "default": 480,
-            "min": 250,
-            "max": 1000,
-            "step": 10,
-            "unit": "px",
-            "label": "Heading width"
           }, {
             "type": "range",
-            "id": "heading_height",
-            "default": 400,
-            "min": 100,
-            "max": 600,
-            "step": 10,
+            "id": "heading_font_size",
+            "default": 20,
+            "min": 0,
+            "max": 50,
+            "step": 1,
             "unit": "px",
-            "label": "Heading height"
+            "label": "Heading font size"
+          }, {
+            "type": "range",
+            "id": "heading_font_line_height",
+            "default": 20,
+            "min": 0,
+            "max": 50,
+            "step": 1,
+            "unit": "px",
+            "label": "Heading font line height"
           }, {
             "type": "color",
             "id": "heading_color",
@@ -476,7 +475,7 @@
             "type": "select",
             "id": "button_font_weight",
             "label": "Button text weight",
-            "default": "normal",
+            "default": "bold",
             "options": [
               {
                 "value": "lighter",
@@ -495,7 +494,7 @@
           }, {
             "type": "range",
             "id": "button_radius",
-            "default": 0,
+            "default": 12,
             "min": 0,
             "max": 50,
             "step": 2,
@@ -504,7 +503,7 @@
           }, {
             "type": "range",
             "id": "button_x_padding",
-            "default": 0,
+            "default": 80,
             "min": 0,
             "max": 100,
             "step": 2,
@@ -513,12 +512,30 @@
           }, {
             "type": "range",
             "id": "button_y_padding",
-            "default": 0,
+            "default": 12,
             "min": 0,
             "max": 100,
             "step": 2,
             "unit": "px",
             "label": "Button padding Y-axis"
+          }, {
+            "type": "range",
+            "id": "button_height",
+            "default": 60,
+            "min": 0,
+            "max": 100,
+            "step": 2,
+            "unit": "px",
+            "label": "Button height"
+          }, {
+            "type": "range",
+            "id": "button_margin_top",
+            "default": 36,
+            "min": 0,
+            "max": 50,
+            "step": 2,
+            "unit": "px",
+            "label": "Button margin top"
           }
         ]
       }

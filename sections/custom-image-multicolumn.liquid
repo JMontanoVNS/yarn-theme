@@ -44,7 +44,7 @@
     {%- endunless -%}
     <slider-component class="slider-mobile-gutter">
       <ul
-        style="border: 2px solid purple;"
+        style="border-radius: 10px; background: {{ section.settings.background_color }}; padding: 15px 4.72%"
         class="multicolumn-list contains-content-container grid grid--{{ section.settings.columns_mobile }}-col-tablet-down grid--{{ section.settings.columns_desktop }}-col-desktop{% if show_mobile_slider %} slider slider--mobile grid--peek{% endif %}"
         id="Slider-{{ section.id }}"
         role="list">
@@ -71,7 +71,7 @@
             data-cascade
             style="--animation-order: {{ forloop.index }};"
             {% endif %}>
-            <div style="border-radius: {{ block.settings.column_border_radius }}px; padding: 3.73% 2.01%;" class="multicolumn-card content-container">
+            <div class="multicolumn-card content-container">
               {%- if block.settings.image != blank -%}
                 {% if section.settings.image_ratio == 'adapt' or section.settings.image_ratio == 'circle' %}
                   {% assign spaced_image = true %}
@@ -102,8 +102,7 @@
                       (min-width: 750px) calc((100vw - {{ grid_space_tablet }}) * {{ image_width }} / {{ number_of_columns_mobile }}),
                       calc((100vw - {{ grid_space_mobile }}) * {{ image_width }} / {{ number_of_columns_mobile }})
                     {% endcapture %}
-                    {{
-                      block.settings.image | image_url: width: 3200 | image_tag: loading: 'lazy', widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200', sizes: sizes, class: 'multicolumn-card__image'
+                    {{ block.settings.image | image_url: width: 3200 | image_tag: loading: 'lazy', widths: '50, 75, 100, 150, 200, 300, 400, 500, 750, 1000, 1250, 1500, 1750, 2000, 2250, 2500, 2750, 3000, 3200', sizes: sizes, class: 'multicolumn-card__image'
                     }}
                   </div>
                 </div>
@@ -180,7 +179,7 @@
 
 {% schema %}
   {
-    "name": "t:sections.multicolumn.name",
+    "name": "Images multicolumn",
     "class": "section",
     "tag": "section",
     "disabled_on": {
@@ -322,6 +321,11 @@
         "default": false,
         "label": "t:sections.multicolumn.settings.swipe_on_mobile.label"
       }, {
+        "type": "color",
+        "id": "background_color",
+        "default": "#F7F1D5",
+        "label": "Background color"
+      }, {
         "type": "header",
         "content": "t:sections.all.padding.section_padding_heading"
       }, {
@@ -389,16 +393,7 @@
     ],
     "presets": [
       {
-        "name": "t:sections.multicolumn.presets.name",
-        "blocks": [
-          {
-            "type": "column"
-          }, {
-            "type": "column"
-          }, {
-            "type": "column"
-          }
-        ]
+        "name": "Images multicolumn"
       }
     ]
   }
