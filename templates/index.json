@@ -7,7 +7,9 @@
           "type": "heading",
           "settings": {
             "heading": "Browse our latest products - LOCAL CHANGE22",
-            "heading_size": "h0"
+            "heading_font_size": 20,
+            "heading_font_line_height": 20,
+            "heading_color": ""
           }
         },
         "button": {
@@ -18,7 +20,15 @@
             "button_style_secondary_1": true,
             "button_label_2": "",
             "button_link_2": "",
-            "button_style_secondary_2": false
+            "button_style_secondary_2": false,
+            "button_color": "#F7C156",
+            "button_text_color": "#000000",
+            "button_font_weight": "bold",
+            "button_radius": 12,
+            "button_x_padding": 80,
+            "button_y_padding": 12,
+            "button_height": 60,
+            "button_margin_top": 36
           }
         }
       },
@@ -27,9 +37,14 @@
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
-        "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "radius_range": 15,
+        "banner_image_height": 760,
+        "image_overlay_opacity": 0,
+        "image_padding_top": 0,
+        "image_padding_right": 0,
+        "image_padding_bottom": 0,
+        "image_padding_left": 108,
+        "desktop_content_position": "middle-left",
         "show_text_box": false,
         "desktop_content_alignment": "center",
         "color_scheme": "inverse",
