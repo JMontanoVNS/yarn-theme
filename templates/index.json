@@ -54,37 +54,36 @@
         "show_text_below": false
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
+    "rich_text_bk7Yke": {
+      "type": "rich-text",
+      "blocks": {
+        "pill_HDKbi8": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "ABOUT YARN CORP",
+            "pill_font_size": 14,
+            "pill_font_weight": 500,
+            "pill_color": "#106572",
+            "pill_text_color": "#fff",
+            "pill_radius": 12,
+            "pill_x_padding": 12,
+            "pill_y_padding": 8
+          }
+        }
+      },
+      "block_order": [
+        "pill_HDKbi8"
+      ],
       "settings": {
-        "title": "Featured products",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "collection": "all",
-        "products_to_show": 8,
-        "columns_desktop": 4,
-        "full_width": false,
-        "show_view_all": true,
-        "view_all_style": "solid",
-        "enable_desktop_slider": false,
-        "color_scheme": "background-1",
-        "image_ratio": "adapt",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "enable_quick_add": false,
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true
       }
     }
   },
   "order": [
     "image_banner",
-    "featured_collection"
+    "rich_text_bk7Yke"
   ]
 }
