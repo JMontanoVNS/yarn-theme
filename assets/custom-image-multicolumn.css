@@ -1,0 +1,34 @@
+.main-container {
+    margin: 0 8.61%;
+    border-radius: 10px;
+    padding: 15px 0;
+}
+
+.image-list {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image img {
+    object-fit: contain;
+    height: 35.98px;
+}
+
+@media screen and (max-width: 749px) {
+    .main-container {
+        padding: 24px 8.61%;
+    }
+
+    .image-list {
+        flex-direction: column;
+        gap: 28px;
+    }
+}

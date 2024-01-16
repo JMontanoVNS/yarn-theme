@@ -29,15 +29,35 @@
     opacity: {{ section.settings.image_overlay_opacity | divided_by: 100.0 }};
   }
   .banner__media {
-    border-radius: {{ section.settings.radius_range }}px;
+    border-radius: 15px;
   }
   .banner::after,
   .banner__media::after {
-    border-radius: {{ section.settings.radius_range }}px;
+    border-radius: 15px;
   }
 
   .banner {
-    height: {{ section.settings.banner_image_height }}px;
+    height: 760px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .section-padding-mobile {
+      padding: 3.84% 5.12% 0 5.12%;
+    }
+
+    .banner {
+      height: 237.5px;
+    }
+
+    .banner__media {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    .banner::after,
+    .banner__media::after {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 {%- endstyle -%}
 
@@ -59,100 +79,131 @@
   endif
 -%}
 
-<div id="Banner-{{ section.id }}" class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} {% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-  {%- if section.settings.image != blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-        if section.settings.image_2 != blank
-          assign image_class = 'banner__media-image-half'
-        endif
-        if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
-          assign sizes = stacked_sizes
-        elsif section.settings.image_2 != blank
-          assign sizes = half_width
-        else
-          assign sizes = full_width
-        endif
-      -%}
-      {{
-        section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image.width, height: image_height, class: image_class, sizes: sizes, widths: widths
-      }}
+<div class="section-padding-mobile">
+  <div id="Banner-{{ section.id }}" class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} {% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {%- liquid
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          if section.settings.image_2 != blank
+            assign image_class = 'banner__media-image-half'
+          endif
+          if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          section.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image.width, height: image_height, class: image_class, sizes: sizes, widths: widths
+        }}
+      </div>
+    {%- elsif section.settings.image_2 == blank -%}
+      <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      </div>
+    {%- endif -%}
+    {%- if section.settings.image_2 != blank -%}
+      <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+        {%- liquid
+          assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
+          if section.settings.image != blank
+            assign image_class_2 = 'banner__media-image-half'
+          endif
+          if section.settings.image != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          section.settings.image_2 | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image_2.width, height: image_height_2, class: image_class_2, sizes: sizes, widths: widths
+        }}
+      </div>
+    {%- endif -%}
+    <div style="padding: {{ section.settings.image_padding_top }}px {{ section.settings.image_padding_right }}px {{ section.settings.image_padding_bottom }}px {{ section.settings.image_padding_left }}px;" class="banner-text-mobile banner__content banner__content--{{ section.settings.desktop_content_position }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div style="padding: 0; width: 35.5%; display: flex; flex-direction: column; align-items: baseline;" class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {%- when 'heading' -%}
+              <h2
+                style="color: {{ block.settings.heading_color }};"
+                class="banner__heading inline-richtext"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.heading }}
+              </h2>
+            {%- when 'text' -%}
+              <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
+                <p>{{ block.settings.text }}</p>
+              </div>
+            {%- when 'buttons' -%}
+              <div
+                style="background: {{ block.settings.button_color }};"
+                class="custom-banner-button banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
+                {{ block.shopify_attributes }}>
+                {%- if block.settings.button_label_1 != blank -%}
+                  <a
+                    style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }}; padding: 0"
+                    {% if block.settings.button_link_1 == blank %}
+                    role="link"
+                    aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link_1 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
+                    {{- block.settings.button_label_1 | escape -}}
+                  </a>
+                {%- endif -%}
+                {%- if block.settings.button_label_2 != blank -%}
+                  <a
+                    {% if block.settings.button_link_2 == blank %}
+                    role="link"
+                    aria-disabled="true"
+                    {% else %}
+                    href="{{ block.settings.button_link_2 }}"
+                    {% endif %}
+                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
+                    {{- block.settings.button_label_2 | escape -}}
+                  </a>
+                {%- endif -%}
+              </div>
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
     </div>
-  {%- elsif section.settings.image_2 == blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
-    </div>
-  {%- endif -%}
-  {%- if section.settings.image_2 != blank -%}
-    <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
-        if section.settings.image != blank
-          assign image_class_2 = 'banner__media-image-half'
-        endif
-        if section.settings.image != blank and section.settings.stack_images_on_mobile
-          assign sizes = stacked_sizes
-        elsif section.settings.image_2 != blank
-          assign sizes = half_width
-        else
-          assign sizes = full_width
-        endif
-      -%}
-      {{
-        section.settings.image_2 | image_url: width: 3840 | image_tag: loading: 'lazy', width: section.settings.image_2.width, height: image_height_2, class: image_class_2, sizes: sizes, widths: widths
-      }}
-    </div>
-  {%- endif -%}
-  <div style="padding: {{ section.settings.image_padding_top }}px {{ section.settings.image_padding_right }}px {{ section.settings.image_padding_bottom }}px {{ section.settings.image_padding_left }}px;" class="banner__content banner__content--{{ section.settings.desktop_content_position }} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
-    <div style="padding: 0; width: 35.5%;" class="banner__box content-container content-container--full-width-mobile color-{{ section.settings.color_scheme }} gradient">
-      {%- for block in section.blocks -%}
-        {%- case block.type -%}
-          {%- when 'heading' -%}
-            <h2
-              style="color: {{ block.settings.heading_color }}; font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_font_line_height }}px;"
-              class="banner__heading inline-richtext"
-              {{ block.shopify_attributes }}>
-              {{ block.settings.heading }}
-            </h2>
-          {%- when 'text' -%}
-            <div class="banner__text rte {{ block.settings.text_style }}" {{ block.shopify_attributes }}>
-              <p>{{ block.settings.text }}</p>
-            </div>
-          {%- when 'buttons' -%}
-            <div
-              style="background: {{ block.settings.button_color }}; border-radius: {{ block.settings.button_radius }}px; padding: {{ block.settings.button_y_padding }}px {{ block.settings.button_x_padding }}px; height: {{ block.settings.button_height }}px; margin-top: {{ block.settings.button_margin_top }}px;"
-              class="banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
-              {{ block.shopify_attributes }}>
-              {%- if block.settings.button_label_1 != blank -%}
-                <a
-                  style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }}; padding: 0"
-                  {% if block.settings.button_link_1 == blank %}
-                  role="link"
-                  aria-disabled="true"
-                  {% else %}
-                  href="{{ block.settings.button_link_1 }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
-                  {{- block.settings.button_label_1 | escape -}}
-                </a>
-              {%- endif -%}
-              {%- if block.settings.button_label_2 != blank -%}
-                <a
-                  {% if block.settings.button_link_2 == blank %}
-                  role="link"
-                  aria-disabled="true"
-                  {% else %}
-                  href="{{ block.settings.button_link_2 }}"
-                  {% endif %}
-                  class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
-                  {{- block.settings.button_label_2 | escape -}}
-                </a>
-              {%- endif -%}
-            </div>
-        {%- endcase -%}
-      {%- endfor -%}
-    </div>
+  </div>
+  <div class="banner-mobile-container">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'heading' -%}
+          <h2 class="banner__heading-mobile inline-richtext" {{ block.shopify_attributes }}>
+            {{ block.settings.heading }}
+          </h2>
+        {%- when 'buttons' -%}
+          <div
+            style="background: {{ block.settings.button_color }}; border-radius: {{ block.settings.button_radius }}px; padding: {{ block.settings.button_y_padding }}px {{ block.settings.button_x_padding }}px; height: {{ block.settings.button_height }}px;"
+            class="banner-button-mobile banner__buttons{% if block.settings.button_label_1 != blank and block.settings.button_label_2 != blank %} banner__buttons--multiple{% endif %}"
+            {{ block.shopify_attributes }}>
+            {%- if block.settings.button_label_1 != blank -%}
+              <a
+                style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }}; padding: 0"
+                {% if block.settings.button_link_1 == blank %}
+                role="link"
+                aria-disabled="true"
+                {% else %}
+                href="{{ block.settings.button_link_1 }}"
+                {% endif %}
+                class="button{% if block.settings.button_style_secondary_1 %} button--secondary{% else %} button--primary{% endif %}">
+                {{- block.settings.button_label_1 | escape -}}
+              </a>
+          </div>
+          {%- endif -%}
+      {%- endcase -%}
+    {%- endfor -%}
   </div>
 </div>
 
@@ -371,24 +422,6 @@
             "default": "Image banner",
             "label": "t:sections.image-banner.blocks.heading.settings.heading.label"
           }, {
-            "type": "range",
-            "id": "heading_font_size",
-            "default": 20,
-            "min": 0,
-            "max": 50,
-            "step": 1,
-            "unit": "px",
-            "label": "Heading font size"
-          }, {
-            "type": "range",
-            "id": "heading_font_line_height",
-            "default": 20,
-            "min": 0,
-            "max": 50,
-            "step": 1,
-            "unit": "px",
-            "label": "Heading font line height"
-          }, {
             "type": "color",
             "id": "heading_color",
             "label": "Heading color"
@@ -478,64 +511,13 @@
             "default": "bold",
             "options": [
               {
-                "value": "lighter",
-                "label": "Lighter"
-              }, {
                 "value": "normal",
                 "label": "Normal"
               }, {
                 "value": "bold",
                 "label": "Bold"
-              }, {
-                "value": "bolder",
-                "label": "Bolder"
               }
             ]
-          }, {
-            "type": "range",
-            "id": "button_radius",
-            "default": 12,
-            "min": 0,
-            "max": 50,
-            "step": 2,
-            "unit": "px",
-            "label": "Button radius"
-          }, {
-            "type": "range",
-            "id": "button_x_padding",
-            "default": 80,
-            "min": 0,
-            "max": 100,
-            "step": 2,
-            "unit": "px",
-            "label": "Button padding X-axis"
-          }, {
-            "type": "range",
-            "id": "button_y_padding",
-            "default": 12,
-            "min": 0,
-            "max": 100,
-            "step": 2,
-            "unit": "px",
-            "label": "Button padding Y-axis"
-          }, {
-            "type": "range",
-            "id": "button_height",
-            "default": 60,
-            "min": 0,
-            "max": 100,
-            "step": 2,
-            "unit": "px",
-            "label": "Button height"
-          }, {
-            "type": "range",
-            "id": "button_margin_top",
-            "default": 36,
-            "min": 0,
-            "max": 50,
-            "step": 2,
-            "unit": "px",
-            "label": "Button margin top"
           }
         ]
       }

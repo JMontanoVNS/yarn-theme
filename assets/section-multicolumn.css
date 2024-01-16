@@ -216,3 +216,24 @@
     display: list-item;
   }
 }
+
+/* CUSTOM CSS */
+
+.multicolumn-section-container {
+  border: 2px solid red;
+  padding: 68px 5.12%;
+}
+
+.multicolumn-list:not(.slider) {
+  padding: 0;
+}
+
+.multicolumn-card {
+
+}
+
+.column-text {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 400;
+}

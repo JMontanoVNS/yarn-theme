@@ -18,19 +18,19 @@
   }
 {%- endstyle -%}
 
-<div style="margin: 0 8.61%; margin-top: 13.58%;" class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
-    <div style="padding-bottom: 8.95%" class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+<div class="rich-text-section-container isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+  <div class="section-content rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
       <div class="rich-text__blocks {{ section.settings.content_alignment }}">
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'pill' -%}
-              <div style="display: inline-block; background-color: {{ block.settings.pill_color }}; border-radius: {{ block.settings.pill_radius }}px; padding: 1.63% {{ block.settings.pill_x_padding }}px;">
-                <p style="margin: 0; color: {{ block.settings.pill_text_color }}; font-size: {{ block.settings.pill_font_size }}px;">{{ block.settings.pill_text }}</p>
+              <div style="background-color: {{ block.settings.pill_color }};" class="pill">
+                <p style="margin: 0; color: {{ block.settings.pill_text_color }};">{{ block.settings.pill_text }}</p>
               </div>
             {%- when 'heading' -%}
               {% comment %} <h2 class="color-text rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"{{ block.shopify_attributes }}{% if settings.animations_reveal_on_scroll %}data-cascadestyle="--animation-order: {{ forloop.index }}; font-weight: {{ block.settings.heading_font_weight }};font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_line_height }}px;"{% endif %}>{{ block.settings.heading }}</h2> {% endcomment %}
-              <p style="font-weight: {{ block.settings.heading_font_weight }}; font-size: {{ block.settings.heading_font_size }}px; line-height: {{ block.settings.heading_line_height }}px;">
+              <p class="heading-container">
                 <span style="color: {{ block.settings.heading_block_color_1 }}">{{ block.settings.heading_block_1 }}</span>
                 <span style="color: {{ block.settings.heading_block_color_2 }}">{{ block.settings.heading_block_2 }}</span>
                 <span style="color: {{ block.settings.heading_block_color_3 }}">{{ block.settings.heading_block_3 }}</span>
@@ -164,28 +164,7 @@
             "id": "pill_text",
             "default": "Talk about your brand",
             "label": "Pill text"
-          },
-          {
-            "type": "range",
-            "id": "pill_font_size",
-            "default": 1,
-            "min": 1,
-            "max": 45,
-            "step": 1,
-            "unit": "px",
-            "label": "Font size"
-          },
-          {
-            "type": "range",
-            "id": "pill_font_weight",
-            "default": 200,
-            "min": 100,
-            "max": 900,
-            "step": 100,
-            "unit": "px",
-            "label": "Font weight"
-          },
-          {
+          }, {
             "type": "color",
             "id": "pill_color",
             "label": "Pill color"
@@ -193,33 +172,6 @@
             "type": "color",
             "id": "pill_text_color",
             "label": "Pill text color"
-          }, {
-            "type": "range",
-            "id": "pill_radius",
-            "default": 0,
-            "min": 0,
-            "max": 50,
-            "step": 2,
-            "unit": "px",
-            "label": "Pill border radius"
-          }, {
-            "type": "range",
-            "id": "pill_x_padding",
-            "default": 0,
-            "min": 0,
-            "max": 100,
-            "step": 2,
-            "unit": "px",
-            "label": "Pill padding X-axis"
-          }, {
-            "type": "range",
-            "id": "pill_y_padding",
-            "default": 0,
-            "min": 0,
-            "max": 100,
-            "step": 2,
-            "unit": "px",
-            "label": "Pill padding Y-axis"
           }
         ]
       },
@@ -270,38 +222,6 @@
             "id": "heading_block_color_3",
             "default": "#9D2B2B",
             "label": "Text color"
-          }, {
-            "type": "select",
-            "id": "heading_font_weight",
-            "options": [
-              {
-                "value": "normal",
-                "label": "Normal"
-              }, {
-                "value": "bold",
-                "label": "Bold"
-              }
-            ],
-            "default": "bold",
-            "label": "Heading font weight"
-          }, {
-            "type": "range",
-            "id": "heading_font_size",
-            "default": 28,
-            "label": "Heading font size",
-            "min": 0,
-            "max": 50,
-            "step": 2,
-            "unit": "px"
-          }, {
-            "type": "range",
-            "id": "heading_line_height",
-            "default": 40,
-            "label": "Heading line height",
-            "min": 28,
-            "max": 70,
-            "step": 2,
-            "unit": "px"
           }
         ]
       },
