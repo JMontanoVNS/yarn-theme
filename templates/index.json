@@ -7,8 +7,6 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>Yarn Corp offers dedicationto quality workwear, merchandise and promotional goods that foster an appreciation for Indigenous culture in Australia.<\/strong>",
-            "heading_font_size": 34,
-            "heading_font_line_height": 46,
             "heading_color": "#000000"
           }
         },
@@ -21,14 +19,9 @@
             "button_label_2": "",
             "button_link_2": "",
             "button_style_secondary_2": false,
-            "button_color": "#F7C156",
+            "button_color": "#f7c156",
             "button_text_color": "#000000",
-            "button_font_weight": "bold",
-            "button_radius": 12,
-            "button_x_padding": 80,
-            "button_y_padding": 12,
-            "button_height": 60,
-            "button_margin_top": 36
+            "button_font_weight": "bold"
           }
         }
       },
@@ -61,27 +54,19 @@
           "type": "pill",
           "settings": {
             "pill_text": "ABOUT YARN CORP",
-            "pill_font_size": 14,
-            "pill_font_weight": 500,
             "pill_color": "#106572",
-            "pill_text_color": "#fff",
-            "pill_radius": 12,
-            "pill_x_padding": 12,
-            "pill_y_padding": 8
+            "pill_text_color": "#ffffff"
           }
         },
         "heading_prLPna": {
           "type": "heading",
           "settings": {
             "heading_block_1": "Add your logo",
-            "heading_block_color_1": "#9D2B2B",
+            "heading_block_color_1": "#9d2b2b",
             "heading_block_2": "to our quality products through our host of printing options, or source a one-of-a-kind design for your company.",
             "heading_block_color_2": "#000000",
             "heading_block_3": "We’ll help you realise your concept!",
-            "heading_block_color_3": "#9D2B2B",
-            "heading_font_weight": "bold",
-            "heading_font_size": 28,
-            "heading_line_height": 40
+            "heading_block_color_3": "#9d2b2b"
           }
         }
       },
@@ -103,20 +88,52 @@
           "type": "column",
           "settings": {
             "title": "",
-            "text": "For over a decade, we have partnered with talented First Nations Artists to produce exceptional custom products to serve the corporate, healthcare, hospitality, and schooling sectors, with our offering growing annually.",
             "link_label": "",
             "link": "",
-            "column_border_radius": 10
+            "text_1": "For over a decade, we have partnered with talented",
+            "text_color_1": "#222",
+            "text_weight_1": "normal",
+            "text_2": "Talk about your brand",
+            "text_color_2": "#106572",
+            "text_weight_2": "normal",
+            "text_3": "Talk about your brand",
+            "text_color_3": "#222",
+            "text_weight_3": "normal",
+            "text_4": "Talk about your brand",
+            "text_color_4": "#106572",
+            "text_weight_4": "normal",
+            "text_5": "Talk about your brand",
+            "text_color_5": "#222",
+            "text_weight_5": "normal",
+            "text_6": "Talk about your brand",
+            "text_color_6": "#106572",
+            "text_weight_6": "normal"
           }
         },
         "column_CFPHTY": {
           "type": "column",
           "settings": {
             "title": "",
-            "text": "With each order you will receive guidance, support and expertise from our sales team and a quality product that reflects the high standards of your business. And with each purchase, we pay royalties to the artist to ensure their work and talent is recognised.",
             "link_label": "",
             "link": "",
-            "column_border_radius": 10
+            "text_1": "Talk about your brand",
+            "text_color_1": "#222",
+            "text_weight_1": "normal",
+            "text_2": "Talk about your brand",
+            "text_color_2": "#106572",
+            "text_weight_2": "normal",
+            "text_3": "Talk about your brand",
+            "text_color_3": "#222",
+            "text_weight_3": "normal",
+            "text_4": "Talk about your brand",
+            "text_color_4": "#106572",
+            "text_weight_4": "normal",
+            "text_5": "Talk about your brand",
+            "text_color_5": "#222",
+            "text_weight_5": "normal",
+            "text_6": "Talk about your brand",
+            "text_color_6": "#106572",
+            "text_weight_6": "normal"
           }
         }
       },
