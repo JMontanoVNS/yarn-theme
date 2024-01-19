@@ -1,5 +1,5 @@
 .main-container {
-    margin: 0 8.61%;
+    margin: 24px 8.61% 40px 8.61%;
     border-radius: 10px;
     padding: 15px 0;
 }
@@ -24,6 +24,7 @@
 
 @media screen and (max-width: 749px) {
     .main-container {
+        margin: 32px 5.12% 68px 5.12%;
         padding: 24px 8.61%;
     }
 

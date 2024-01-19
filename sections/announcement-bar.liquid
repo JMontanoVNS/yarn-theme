@@ -1,6 +1,5 @@
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'component-slider.css' | asset_url | stylesheet_tag }}
-{{ 'section-yarn-announcement-bar.css' | asset_url | stylesheet_tag }}
 
 {%- liquid
   assign social_icons = true
@@ -21,25 +20,39 @@
 
 {% style %}
   .announcement-container {
-    border-radius: {{ section.settings.radius_range }}px;
-    height: {{ section.settings.bar_height }}px;
+    border-radius: 20px;
+    height: 52px;
     padding: 0 2.84% 0 1.91%;
+    margin-top: 16px;
+    margin-left: 1.11%;
+    margin-right: 1.11%;
   }
 
   .bar-content {
-    line-height: {{ section.settings.bar_height }}px;
+    line-height: 52px;
     margin: 0;
     padding-left: 0.92%;
   }
 
   .localization-selects {
     padding-right: o;
-    border: 2px solid pink;
   }
 
   @media screen and (max-width: 749px) {
     .announcement-container {
+      display: flex;
+      align-items: center;
       border-radius: 0;
+      margin: 0;
+      padding: 0 5.12%;
+    }
+
+    .announcement-bar-slider {
+      gap: 1.79%;
+    }
+
+    .announcement-bar__announcement {
+      padding: 0 5.96%;
     }
   }
 {% endstyle %}
@@ -238,26 +251,6 @@
     },
     "settings": [
       {
-        "type": "range",
-        "id": "radius_range",
-        "label": "Bar border-radius value",
-        "min": 0,
-        "max": 50,
-        "step": 5,
-        "unit": "px",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "bar_height",
-        "default": 52,
-        "min": 0,
-        "max": 100,
-        "step": 2,
-        "unit": "px",
-        "label": "Bar height"
-      },
-      {
         "type": "color_scheme",
         "id": "color_scheme",
         "label": "t:sections.all.colors.label",
@@ -268,11 +261,13 @@
         "id": "show_line_separator",
         "default": true,
         "label": "t:sections.header.settings.show_line_separator.label"
-      }, {
+      },
+      {
         "type": "header",
         "content": "t:sections.announcement-bar.settings.header__1.content",
         "info": "t:sections.announcement-bar.settings.header__1.info"
-      }, {
+      },
+      {
         "type": "checkbox",
         "id": "show_social",
         "default": false,

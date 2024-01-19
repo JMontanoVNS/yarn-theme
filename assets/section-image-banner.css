@@ -484,6 +484,10 @@
 
 /* CUSTOM CSS */
 
+.section-padding-mobile {
+  padding: 16px 1.11% 0 1.11%;
+}
+
 .banner-mobile-container {
   display: none;
 }
@@ -512,6 +516,10 @@
 }
 
 @media screen and (max-width: 749px) {
+  .section-padding-mobile {
+    padding: 16px 5.12% 0 5.12%;
+  }
+
   .banner-text-mobile {
     display: none;
   }

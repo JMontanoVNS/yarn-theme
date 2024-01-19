@@ -220,8 +220,15 @@
 /* CUSTOM CSS */
 
 .multicolumn-section-container {
-  border: 2px solid red;
-  padding: 68px 5.12%;
+  padding: 0 5.12%;
+  margin-top: 40px;
+}
+
+.multicolumn-list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 24px;
 }
 
 .multicolumn-list:not(.slider) {
@@ -229,11 +236,35 @@
 }
 
 .multicolumn-card {
+  border-radius: 10px;
+}
 
+.multicolumn-card__info {
+  padding: 20px 6.79%;
 }
 
 .column-text {
   font-size: 16px;
   line-height: 26px;
   font-weight: 400;
+}
+
+@media screen and (min-width: 990px) {
+  .multicolumn-section-container {
+    padding: 0 8.61%;
+    margin-top: 48px;
+  }
+
+  .multicolumn-list {
+    flex-direction: row;
+    gap: 2.01%;
+  }
+
+  .multicolumn-list > li {
+    width: 100%;
+  }
+
+  .multicolumn-card__info {
+    padding: 20px 4.109%;
+  }
 }

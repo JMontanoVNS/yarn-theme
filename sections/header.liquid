@@ -88,12 +88,13 @@
 </style>
 
 {%- style -%}
+/* CUSTOM CSS */
+
   .header {
-    padding: {{ section.settings.padding_top | times: 0.5 | round: 0 }}px 3rem {{ section.settings.padding_bottom | times: 0.5 | round: 0 }}px 3rem;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 2.27%;
-    padding-right: 2.27%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 0 5.12%;
+    height: 68px;
   }
 
   .section-header {
@@ -102,19 +103,15 @@
   }
 
   .list-menu {
+    display: flex;
+    justify-content: center;
     font-weight: {{ section.settings.font_weight }};
   }
 
   @media screen and (min-width: 750px) {
-    .section-header {
-      margin-bottom: {{ section.settings.margin_bottom }}px;
-    }
-  }
-
-  @media screen and (min-width: 990px) {
     .header {
-      padding-top: {{ section.settings.padding_top }}px;
-      padding-bottom: {{ section.settings.padding_bottom }}px;
+      margin: 16px 1.11% 0 1.11%;
+      padding: 0 2.22%;
     }
   }
 {%- endstyle -%}
@@ -177,7 +174,7 @@
 
     {%- if section.settings.logo_position != 'middle-center' -%}
       {%- if request.page_type == 'index' -%}
-        <h1 class="header__heading">
+        <h1 class="header-item header__heading">
       {%- endif -%}
           <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
             {%- if settings.logo != blank -%}
@@ -674,40 +671,6 @@
     {
       "type": "header",
       "content": "t:sections.all.spacing"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "min": 0,
-      "max": 100,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.header.settings.margin_bottom.label",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:sections.all.padding.section_padding_heading"
-    },
-    {
-      "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_top",
-      "default": 20
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 36,
-      "step": 4,
-      "unit": "px",
-      "label": "t:sections.all.padding.padding_bottom",
-      "default": 20
     }
   ],
   "blocks": [
