@@ -157,11 +157,56 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "custom_image_multicolumn_UHeYUR": {
+      "type": "custom-image-multicolumn",
+      "blocks": {
+        "column_gTk8pz": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/authentic.png",
+            "image_width": 163.8
+          }
+        },
+        "column_kQcDCj": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/artist.png",
+            "image_width": 199.5
+          }
+        },
+        "column_Y7LCwk": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/friendly.png",
+            "image_width": 162.3
+          }
+        },
+        "column_d6DTAQ": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/nations.png",
+            "image_width": 224.1
+          }
+        }
+      },
+      "block_order": [
+        "column_gTk8pz",
+        "column_kQcDCj",
+        "column_Y7LCwk",
+        "column_d6DTAQ"
+      ],
+      "settings": {
+        "background_color": "#F7F1D5",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
     "rich_text_bk7Yke",
-    "multicolumn_JCfPQk"
+    "multicolumn_JCfPQk",
+    "custom_image_multicolumn_UHeYUR"
   ]
 }
