@@ -1,4 +1,4 @@
-{{ 'section-rich-text.css' | asset_url | stylesheet_tag }}
+{{ 'custom-about.css' | asset_url | stylesheet_tag }}
 
 {%- style -%}
   .section-{{ section.id }}-padding {
@@ -18,79 +18,96 @@
   }
 {%- endstyle -%}
 
-<div class="rich-text-section-container isolate{% unless section.settings.full_width %} page-width{% endunless %}">
-  <div class="section-content rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
-    <div class="rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
-      <div class="rich-text__blocks {{ section.settings.content_alignment }}">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-            {%- when 'pill' -%}
-              <div style="background-color: {{ block.settings.pill_color }};" class="pill">
-                <p style="margin: 0; color: {{ block.settings.pill_text_color }};">{{ block.settings.pill_text }}</p>
-              </div>
-            {%- when 'heading' -%}
-              <p class="heading-container">
-                <span style="color: {{ block.settings.heading_block_color_1 }}">{{ block.settings.heading_block_1 }}</span>
-                <span style="color: {{ block.settings.heading_block_color_2 }}">{{ block.settings.heading_block_2 }}</span>
-                <span style="color: {{ block.settings.heading_block_color_3 }}">{{ block.settings.heading_block_3 }}</span>
-              </p>
-            {%- when 'caption' -%}
-              <p
-                class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-                {% endif %}>
-                {{ block.settings.caption | escape }}
-              </p>
-            {%- when 'text' -%}
-              <div
-                class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-                {% endif %}>
-                {{ block.settings.text }} {{ block.settings.spacing_range }}
-              </div>
-            {%- when 'button' -%}
-              <div
-                class="rich-text__buttons{% if block.settings.button_label != blank and block.settings.button_label_2 != blank %} rich-text__buttons--multiple{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
-                {{ block.shopify_attributes }}
-                {% if settings.animations_reveal_on_scroll %}
-                data-cascade
-                style="--animation-order: {{ forloop.index }};"
-                {% endif %}>
-                {%- if block.settings.button_label != blank -%}
-                  <a
-                    {% if block.settings.button_link == blank %}
-                    role="link"
-                    aria-disabled="true"
-                    {% else %}
-                    href="{{ block.settings.button_link }}"
-                    {% endif %}
-                    class="button{% if block.settings.button_style_secondary %} button--secondary{% else %} button--primary{% endif %}">
-                    {{- block.settings.button_label | escape -}}
-                  </a>
-                {%- endif -%}
-                {%- if block.settings.button_label_2 != blank -%}
-                  <a
-                    {% if block.settings.button_link_2 == blank %}
-                    role="link"
-                    aria-disabled="true"
-                    {% else %}
-                    href="{{ block.settings.button_link_2 }}"
-                    {% endif %}
-                    class="button{% if block.settings.button_style_secondary_2 %} button--secondary{% else %} button--primary{% endif %}">
-                    {{- block.settings.button_label_2 | escape -}}
-                  </a>
-                {%- endif -%}
-              </div>
-          {%- endcase -%}
-        {%- endfor -%}
+<div class="main-about-container">
+  <div class="about-rich-text-section-container isolate{% unless section.settings.full_width %} page-width{% endunless %}">
+    <div class="section-content rich-text content-container color-{{ section.settings.color_scheme }} gradient{% if section.settings.full_width %} rich-text--full-width content-container--full-width{% endif %} section-{{ section.id }}-padding">
+      <div class="about-rich-text__wrapper rich-text__wrapper--{{ section.settings.desktop_content_position }}{% if section.settings.full_width %} page-width{% endif %}">
+        <div class="about-rich-text__blocks {{ section.settings.content_alignment }}">
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when 'pill' -%}
+                <div style="background-color: {{ block.settings.pill_color }};" class="about-pill">
+                  <p style="margin: 0; color: {{ block.settings.pill_text_color }};">{{ block.settings.pill_text }}</p>
+                </div>
+              {%- when 'heading' -%}
+                <p class="about-heading-container">
+                  <span style="color: {{ block.settings.heading_block_color_1 }}">{{ block.settings.heading_block_1 }}</span>
+                  <span style="color: {{ block.settings.heading_block_color_2 }}">{{ block.settings.heading_block_2 }}</span>
+                  <span style="color: {{ block.settings.heading_block_color_3 }}">{{ block.settings.heading_block_3 }}</span>
+                  <span style="color: {{ block.settings.heading_block_color_4 }}">{{ block.settings.heading_block_4 }}</span>
+                </p>
+              {%- when 'caption' -%}
+                <p
+                  class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {{ block.shopify_attributes }}
+                  {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                  {% endif %}>
+                  {{ block.settings.caption | escape }}
+                </p>
+              {%- when 'text' -%}
+                <div
+                  class="rich-text__text rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+                  {{ block.shopify_attributes }}
+                  {% if settings.animations_reveal_on_scroll %}
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                  {% endif %}>
+                  {{ block.settings.text }} {{ block.settings.spacing_range }}
+                </div>
+              {%- when 'button' -%}
+                <div style="background: {{ block.settings.button_color }};" class="about-rich-text__buttons">
+                  {%- if block.settings.button_label != blank -%}
+                    <a
+                      style="color: {{ block.settings.button_text_color }}; font-weight: {{ block.settings.button_font_weight }}; padding: 0"
+                      {% if block.settings.button_link == blank %}
+                      role="link"
+                      aria-disabled="true"
+                      {% else %}
+                      href="{{ block.settings.button_link }}"
+                      {% endif %}>
+                      {{- block.settings.button_label | escape -}}
+                    </a>
+                  {%- endif -%}
+                </div>
+            {%- endcase -%}
+          {%- endfor -%}
+        </div>
       </div>
     </div>
+  </div>
+  <div class="about-images-container">
+    {% for block in section.blocks %}
+      <div class="about-image-1">
+        {% if block.settings.image_1 == blank %}
+          Image 1
+        {% else %}
+          {{ block.settings.image_1 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
+        {% endif %}
+      </div>
+      <div class="about-image-2">
+        {% if block.settings.image_2 == blank %}
+          Image 2
+        {% else %}
+          {{ block.settings.image_2 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
+        {% endif %}
+      </div>
+      <div class="about-image-3">
+        {% if block.settings.image_3 == blank %}
+          Image 3
+        {% else %}
+          {{ block.settings.image_3 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
+        {% endif %}
+      </div>
+      <div class="about-image-4">
+        {% if block.settings.image_4 == blank %}
+          Image 4
+        {% else %}
+          {{ block.settings.image_4 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
+        {% endif %}
+      </div>
+    {% endfor %}
   </div>
 </div>
 
@@ -219,6 +236,19 @@
             "id": "heading_block_color_3",
             "default": "#9D2B2B",
             "label": "Text color"
+          }, {
+            "type": "header",
+            "content": "Text block 4"
+          }, {
+            "type": "textarea",
+            "id": "heading_block_4",
+            "default": "Talk about your brand",
+            "label": "Text"
+          }, {
+            "type": "color",
+            "id": "heading_block_color_4",
+            "default": "#9D2B2B",
+            "label": "Text color"
           }
         ]
       },
@@ -311,26 +341,58 @@
             "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_1.label"
           },
           {
-            "type": "text",
-            "id": "button_label_2",
-            "label": "t:sections.rich-text.blocks.buttons.settings.button_label_2.label",
-            "info": "t:sections.rich-text.blocks.buttons.settings.button_label_2.info"
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#F7C156"
           }, {
-            "type": "url",
-            "id": "button_link_2",
-            "label": "t:sections.rich-text.blocks.buttons.settings.button_link_2.label"
+            "type": "color",
+            "id": "button_text_color",
+            "label": "Button text color",
+            "default": "#000000"
           }, {
-            "type": "checkbox",
-            "id": "button_style_secondary_2",
-            "default": false,
-            "label": "t:sections.rich-text.blocks.buttons.settings.button_style_secondary_2.label"
+            "type": "select",
+            "id": "button_font_weight",
+            "label": "Button text weight",
+            "default": "bold",
+            "options": [
+              {
+                "value": "normal",
+                "label": "Normal"
+              }, {
+                "value": "bold",
+                "label": "Bold"
+              }
+            ]
+          }
+        ]
+      }, {
+        "type": "image_picker",
+        "name": "Images",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image_1",
+            "label": "Image 1"
+          }, {
+            "type": "image_picker",
+            "id": "image_2",
+            "label": "Image 2"
+          }, {
+            "type": "image_picker",
+            "id": "image_3",
+            "label": "Image 3"
+          }, {
+            "type": "image_picker",
+            "id": "image_4",
+            "label": "Image 4"
           }
         ]
       }
     ],
     "presets": [
       {
-        "name": "t:sections.rich-text.presets.name",
+        "name": "About with images",
         "blocks": [
           {
             "type": "heading"

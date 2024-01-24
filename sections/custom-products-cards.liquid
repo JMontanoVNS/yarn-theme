@@ -1,0 +1,78 @@
+{{ 'custom-products-cards.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+  .card-content > img {
+    width: {{ block.settings.image_width }}px;
+    height: {{ block.settings.image_height }}px;
+  }
+{% endstyle %}
+
+<div class="main-container shopify-section">
+  <p class="products-heading">{{ section.settings.heading_text }}</p>
+
+  <div class="cards-container">
+    {% for block in section.blocks %}
+      {% if block.settings.background_image == blank %}
+        <div class="product-card">
+          Product card
+        </div>
+      {% else %}
+        <div style="background: center / cover no-repeat url('{{ block.settings.background_image | image_url: width: 1000 }}');" class="product-card">
+          <div class="card-content">
+            <div class="image">
+              {% if block.settings.product_image %}
+                {{ block.settings.product_image | image_url: width: 450, height: 450 | image_tag: loading: 'lazy' }}
+              {% endif %}
+            </div>
+            <p>{{ block.settings.product_text }}</p>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Products cards",
+    "class": "section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "heading_text",
+        "label": "Heading",
+        "default": "Heading example"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Product card",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Card background image"
+          }, {
+            "type": "image_picker",
+            "id": "product_image",
+            "label": "Card product image"
+          }, {
+            "type": "text",
+            "id": "product_text",
+            "label": "Card text"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Products cards"
+      }
+    ]
+  }
+{% endschema %}
