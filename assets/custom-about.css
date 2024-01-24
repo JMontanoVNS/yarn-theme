@@ -88,8 +88,8 @@
   
   /* CUSTOM CSS */
   
-  .rich-text-section-container {
-    margin: 68px 5.12% 0 5.12%;
+  .about-rich-text-section-container {
+    margin-top: 32px;
   }
   
   .section-content {
@@ -117,6 +117,7 @@
     padding: 12px 40px;
     border-radius: 12px;
     margin-top: 32px;
+    text-align: center;
   }
 
   .about-rich-text__buttons > a {
@@ -144,10 +145,6 @@
     flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
-}  
-
-.about-rich-text-section-container {
-    margin-top: 32px;
 }
 
 .about-images-container {
