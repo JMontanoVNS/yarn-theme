@@ -1,12 +1,12 @@
 {{ 'custom-image-multicolumn.css' | asset_url | stylesheet_tag }}
 
-<div style="background-color: {{ section.settings.background_color }}" class="main-container shopify-section">
+<div style="background-color: {{ section.settings.background_color }}" class="image-multicolumn-main-container shopify-section">
   <ul class="image-list">
     {% for block in section.blocks %}
       {% if block.settings.image == blank %}
         <h1>Select a image</h1>
       {% else %}
-        <div class="image">
+        <div class="multicolumn-image">
           {{ block.settings.image | image_url: width: block.settings.image_width | image_tag: loading: 'lazy' }}
         </div>
       {% endif %}

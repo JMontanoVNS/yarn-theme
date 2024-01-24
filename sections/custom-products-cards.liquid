@@ -7,7 +7,7 @@
   }
 {% endstyle %}
 
-<div class="main-container shopify-section">
+<div class="product-cards-main-container shopify-section">
   <p class="products-heading">{{ section.settings.heading_text }}</p>
 
   <div class="cards-container">
@@ -19,7 +19,7 @@
       {% else %}
         <div style="background: center / cover no-repeat url('{{ block.settings.background_image | image_url: width: 1000 }}');" class="product-card">
           <div class="card-content">
-            <div class="image">
+            <div class="product-cards-image">
               {% if block.settings.product_image %}
                 {{ block.settings.product_image | image_url: width: 450, height: 450 | image_tag: loading: 'lazy' }}
               {% endif %}

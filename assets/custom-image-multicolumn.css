@@ -1,5 +1,5 @@
-.main-container {
-    margin: 24px 8.61% 40px 8.61%;
+.image-multicolumn-main-container {
+    margin: 24px 8.61% 140px 8.61%;
     border-radius: 10px;
     padding: 15px 0;
 }
@@ -11,19 +11,19 @@
     justify-content: space-around;
 }
 
-.image {
+.multicolumn-image {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.image img {
+.multicolumn-image img {
     object-fit: contain;
     height: 35.98px;
 }
 
 @media screen and (max-width: 749px) {
-    .main-container {
+    .image-multicolumn-main-container {
         margin: 32px 5.12% 68px 5.12%;
         padding: 24px 8.61%;
     }
