@@ -81,28 +81,28 @@
     {% for block in section.blocks %}
       <div class="about-image-1">
         {% if block.settings.image_1 == blank %}
-          Image 1
+          <span class="about-no-image">Image 1</span>
         {% else %}
           {{ block.settings.image_1 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
         {% endif %}
       </div>
       <div class="about-image-2">
         {% if block.settings.image_2 == blank %}
-          Image 2
+          <span class="about-no-image">Image 2</span>
         {% else %}
           {{ block.settings.image_2 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
         {% endif %}
       </div>
       <div class="about-image-3">
         {% if block.settings.image_3 == blank %}
-          Image 3
+          <span class="about-no-image">Image 3</span>
         {% else %}
           {{ block.settings.image_3 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
         {% endif %}
       </div>
       <div class="about-image-4">
         {% if block.settings.image_4 == blank %}
-          Image 4
+          <span class="about-no-image">Image 4</span>
         {% else %}
           {{ block.settings.image_4 | image_url: width: 600 | image_tag: class: 'about-image-file', loading: 'lazy' }}
         {% endif %}
@@ -119,54 +119,6 @@
     "disabled_on": {
       "groups": ["header", "footer"]
     },
-    "settings": [
-      {
-        "type": "select",
-        "id": "desktop_content_position",
-        "options": [
-          {
-            "value": "left",
-            "label": "t:sections.rich-text.settings.desktop_content_position.options__1.label"
-          }, {
-            "value": "center",
-            "label": "t:sections.rich-text.settings.desktop_content_position.options__2.label"
-          }, {
-            "value": "right",
-            "label": "t:sections.rich-text.settings.desktop_content_position.options__3.label"
-          }
-        ],
-        "default": "center",
-        "label": "t:sections.rich-text.settings.desktop_content_position.label",
-        "info": "t:sections.rich-text.settings.desktop_content_position.info"
-      }, {
-        "type": "select",
-        "id": "content_alignment",
-        "options": [
-          {
-            "value": "left",
-            "label": "t:sections.rich-text.settings.content_alignment.options__1.label"
-          }, {
-            "value": "center",
-            "label": "t:sections.rich-text.settings.content_alignment.options__2.label"
-          }, {
-            "value": "right",
-            "label": "t:sections.rich-text.settings.content_alignment.options__3.label"
-          }
-        ],
-        "default": "center",
-        "label": "t:sections.rich-text.settings.content_alignment.label"
-      }, {
-        "type": "color_scheme",
-        "id": "color_scheme",
-        "label": "t:sections.all.colors.label",
-        "default": "background-1"
-      }, {
-        "type": "checkbox",
-        "id": "full_width",
-        "default": true,
-        "label": "t:sections.rich-text.settings.full_width.label"
-      }
-    ],
     "blocks": [
       {
         "type": "pill",
@@ -181,10 +133,12 @@
           }, {
             "type": "color",
             "id": "pill_color",
+            "default": "#106572",
             "label": "Pill color"
           }, {
             "type": "color",
             "id": "pill_text_color",
+            "default": "#FFFFFF",
             "label": "Pill text color"
           }
         ]
@@ -297,27 +251,6 @@
         ]
       },
       {
-        "type": "text",
-        "name": "t:sections.rich-text.blocks.text.name",
-        "limit": 3,
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "text",
-            "default": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>",
-            "label": "t:sections.rich-text.blocks.text.settings.text.label"
-          }, {
-            "type": "range",
-            "id": "spacing_range",
-            "label": "Letter spacing value",
-            "min": 0,
-            "max": 50,
-            "step": 1,
-            "unit": "px",
-            "default": 0
-          }
-        ]
-      }, {
         "type": "button",
         "name": "t:sections.rich-text.blocks.buttons.name",
         "limit": 2,
@@ -395,11 +328,13 @@
         "name": "About with images",
         "blocks": [
           {
+            "type": "pill"
+          }, {
             "type": "heading"
           }, {
-            "type": "text"
-          }, {
             "type": "button"
+          }, {
+            "type": "image_picker"
           }
         ]
       }
