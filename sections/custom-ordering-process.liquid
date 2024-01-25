@@ -1,0 +1,100 @@
+{{ 'custom-ordering-process.css' | asset_url | stylesheet_tag }}
+
+<div class="ordering-process-main-container shopify-section">
+  <div style="background: {{ section.settings.background_color }};" class="ordering-process-content-container">
+    {% if section.settings.section_title %}
+      <p class="ordering-process-title">{{ section.settings.section_title }}</p>
+    {% endif %}
+    {% if section.settings.section_description %}
+      <p class="ordering-process-description">{{ section.settings.section_description }}</p>
+    {% endif %}
+
+    <ul class="ordering-process-list">
+      {% for block in section.blocks %}
+        <li>
+          {% if block.settings.step_image == blank %}
+            <span>Select a image</span>
+          {% else %}
+            <div class="step-image-container">
+              {{ block.settings.step_image | image_url: width: 450 | image_tag: class: 'step-image', loading: 'lazy' }}
+            </div>
+          {% endif %}
+          {% if block.settings.step_text == blank %}
+            <span>Step number</span>
+          {% else %}
+            <p class="ordering-step-number">{{ block.settings.step_text }}</p>
+          {% endif %}
+          {% if block.settings.step_title == blank %}
+            <span>Step title</span>
+          {% else %}
+            <p class="ordering-step-title">{{ block.settings.step_title }}</p>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Ordering process",
+    "class": "section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "default": "Title",
+        "label": "Title"
+      }, {
+        "type": "textarea",
+        "id": "section_description",
+        "default": "Lorem ipsum dolor",
+        "label": "Description"
+      }, {
+        "type": "color",
+        "id": "background_color",
+        "default": "#F7F1D5",
+        "label": "Background color"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Step",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "step_image",
+            "label": "Step image"
+          }, {
+            "type": "text",
+            "id": "step_text",
+            "label": "Step text"
+          }, {
+            "type": "text",
+            "id": "step_title",
+            "label": "Step title"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Ordering process",
+        "blocks": [
+          {
+            "type": "column"
+          }, {
+            "type": "column"
+          }, {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

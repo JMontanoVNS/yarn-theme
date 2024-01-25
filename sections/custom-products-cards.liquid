@@ -1,12 +1,5 @@
 {{ 'custom-products-cards.css' | asset_url | stylesheet_tag }}
 
-{% style %}
-  .card-content > img {
-    width: {{ block.settings.image_width }}px;
-    height: {{ block.settings.image_height }}px;
-  }
-{% endstyle %}
-
 <div class="product-cards-main-container shopify-section">
   <p class="products-heading">{{ section.settings.heading_text }}</p>
 
@@ -21,7 +14,7 @@
           <div class="card-content">
             <div class="product-cards-image">
               {% if block.settings.product_image %}
-                {{ block.settings.product_image | image_url: width: 450, height: 450 | image_tag: loading: 'lazy' }}
+                {{ block.settings.product_image | image_url: width: 450 | image_tag: loading: 'lazy' }}
               {% endif %}
             </div>
             <p>{{ block.settings.product_text }}</p>
