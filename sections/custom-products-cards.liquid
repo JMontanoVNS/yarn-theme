@@ -5,11 +5,7 @@
 
   <div class="cards-container">
     {% for block in section.blocks %}
-      {% if block.settings.background_image == blank %}
-        <div class="product-card">
-          Product card
-        </div>
-      {% else %}
+      {% if block.settings.background_image %}
         <div style="background: center / cover no-repeat url('{{ block.settings.background_image | image_url: width: 1000 }}');" class="product-card">
           <div class="card-content">
             <div class="product-cards-image">
@@ -19,6 +15,10 @@
             </div>
             <p>{{ block.settings.product_text }}</p>
           </div>
+        </div>
+      {% else %}
+        <div class="product-card">
+          Product card
         </div>
       {% endif %}
     {% endfor %}
