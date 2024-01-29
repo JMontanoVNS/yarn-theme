@@ -199,19 +199,12 @@
       "settings": {
         "background_color": "#f7f1d5"
       }
-    },
-    "custom_products_cards_t3VLJY": {
-      "type": "custom-products-cards",
-      "settings": {
-        "heading_text": "Customize now"
-      }
     }
   },
   "order": [
     "image_banner",
     "rich_text_bk7Yke",
     "multicolumn_JCfPQk",
-    "custom_image_multicolumn_UHeYUR",
-    "custom_products_cards_t3VLJY"
+    "custom_image_multicolumn_UHeYUR"
   ]
 }
