@@ -1,0 +1,158 @@
+.other-ways-main-container {
+    /* border: 2px solid red; */
+    padding: 28px 5.12%;
+}
+
+.other-ways-content-container {
+    /* border: 2px solid purple; */
+    padding: 60px 8%;
+    border-radius: 20px;
+    background: #4299A9;
+}
+
+.other-ways-content-section-left {
+    /* border: 1px solid yellow; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.other-ways-content-section-right {
+    /* border: 1px solid pink; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 24px;
+}
+
+.other-ways-pill {
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.other-ways-description-container {
+    display: flex;
+    align-items: center;
+    gap: 4.08%;
+    width: 100%;
+}
+
+.other-ways-description-container span {
+    width: 28px;
+    height: 28px;
+}
+
+.other-ways-description-container > p {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+    color: #F7F1D5;
+    margin: 0;
+}
+
+.other-ways-bigtext {
+    font-size: 32px;
+    line-height: 40.14px;
+    font-weight: 700;
+    color: #F7F1D5;
+    margin: 0;
+}
+
+.other-ways-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+    border-radius: 12px;
+    height: 48px;
+    width: 100%;
+}
+
+.other-ways-button > a {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+@media screen and (min-width: 990px) {
+    .other-ways-main-container {
+        padding: 0 1.11%;
+    }
+
+    .other-ways-content-container {
+        position: relative;
+        display: flex;
+        padding: 60px 3.69%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .other-ways-content-section-left {
+        align-items: flex-start;
+        width: 62.78%;
+        margin: 40px;
+        gap: 0;
+    }
+    
+    .other-ways-content-section-left > div:first-of-type {
+        margin-bottom: 20px;
+        width: 78.28%;
+        gap: 2.31%;
+    }
+
+    .other-ways-content-section-left > div:last-of-type {
+        width: 79.63%;
+        gap: 2.27%;
+    }
+
+    .other-ways-pill {
+        margin-left: 4.97%;
+        margin-bottom: 32px;
+    }
+
+    .other-ways-description-container {
+        /* gap: 2.07%; */
+    }
+
+    .other-ways-description-container > p {
+        font-size: 28px;
+        line-height: 40px;
+    }
+
+    .other-ways-content-section-right {
+        /* margin-top: 0;
+        gap: 0; */
+    }
+
+    .other-ways-bigtext {
+        position: absolute;
+        top: 90.1px;
+        right: 7.74%;
+        width: 407px;
+        font-size: 90.63px;
+        line-height: 91.62px;
+        text-align: center;
+    }
+
+    .other-ways-button {
+        position: absolute;
+        height: 60px;
+        width: 329px;
+        bottom: 72.5px;
+        right: 10.44%;
+        padding: 12px 5.68%;
+    }
+
+    .other-ways-button > a {
+        font-size: 16px;
+    }
+}

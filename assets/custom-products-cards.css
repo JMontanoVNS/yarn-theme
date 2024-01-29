@@ -23,6 +23,8 @@
     align-items: center;
     border-radius: 20px;
     height: 413px;
+    border: 1px solid #106572;
+    font-weight: 700;
 }
 
 .card-content {

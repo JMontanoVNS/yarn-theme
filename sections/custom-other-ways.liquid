@@ -1,0 +1,148 @@
+{{ 'custom-other-ways.css' | asset_url | stylesheet_tag }}
+
+<div class="other-ways-main-container shopify-section">
+  <div class="other-ways-content-container">
+    <div class="other-ways-content-section-left">
+      {% for block in section.blocks %}
+        {% if block.settings.pill_color != blank %}
+          <span style="background-color: {{ block.settings.pill_color }}; color: {{ block.settings.pill_text_color }};" class="other-ways-pill">{{ block.settings.pill_text }}</span>
+        {% endif %}
+        {% if block.settings.description_text %}
+          <div class="other-ways-description-container">
+            <span><img src="{{ '../assets/arrow-up-line.svg' | asset_url }}" alt="Arrow icon"></span>
+            <p>{{ block.settings.description_text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="other-ways-content-section-right">
+      {% for block in section.blocks %}
+        {% if block.settings.big_text %}
+          <p class="other-ways-bigtext">{{ block.settings.big_text }}</p>
+        {% endif %}
+        {% if block.settings.button_label %}
+          <div style="background: {{ block.settings.button_color }};" class="other-ways-button">
+            <a
+              {% if block.settings.button_link == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ block.settings.button_link }}"
+              {% endif %}>
+              {{- block.settings.button_label | escape -}}
+            </a>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Other ways",
+    "class": "section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "section_background_image",
+        "label": "Background image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "pill",
+        "name": "Title pill",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "pill_text",
+            "default": "Talk about your brand",
+            "label": "Pill text"
+          }, {
+            "type": "color",
+            "id": "pill_color",
+            "default": "#F7F1D5",
+            "label": "Pill color"
+          }, {
+            "type": "color",
+            "id": "pill_text_color",
+            "default": "#222222",
+            "label": "Pill text color"
+          }
+        ]
+      }, {
+        "type": "description",
+        "name": "Description",
+        "limit": 2,
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "description_text",
+            "default": "Talk about your brand",
+            "label": "Description"
+          }
+        ]
+      }, {
+        "type": "text",
+        "name": "Big text",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "big_text",
+            "default": "BIG TEXT HERE",
+            "label": "Big text"
+          }
+        ]
+      }, {
+        "type": "button",
+        "name": "Button",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "default": "Button label",
+            "label": "Button label"
+          }, {
+            "type": "url",
+            "id": "button_link",
+            "label": "Button link"
+          }, {
+            "type": "color",
+            "id": "button_color",
+            "label": "Button color",
+            "default": "#F7C156"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Other ways",
+        "blocks": [
+          {
+            "type": "pill"
+          },
+          {
+            "type": "description"
+          },
+          {
+            "type": "description"
+          },
+          {
+            "type": "text"
+          }, {
+            "type": "button"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
