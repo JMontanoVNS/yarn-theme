@@ -91,19 +91,19 @@
             "link_label": "",
             "link": "",
             "text_1": "For over a decade, we have partnered with talented",
-            "text_color_1": "#222",
+            "text_color_1": "#222222",
             "text_weight_1": "normal",
             "text_2": "First Nations Artists",
             "text_color_2": "#106572",
             "text_weight_2": "bold",
             "text_3": "to produce exceptional custom products to serve the corporate, healthcare, hospitality, and schooling sectors, with our offering growing annually.",
-            "text_color_3": "#222",
+            "text_color_3": "#222222",
             "text_weight_3": "normal",
             "text_4": "",
             "text_color_4": "#106572",
             "text_weight_4": "normal",
             "text_5": "",
-            "text_color_5": "#222",
+            "text_color_5": "#222222",
             "text_weight_5": "normal",
             "text_6": "",
             "text_color_6": "#106572",
@@ -117,19 +117,19 @@
             "link_label": "",
             "link": "",
             "text_1": "With each order you will receive",
-            "text_color_1": "#222",
+            "text_color_1": "#222222",
             "text_weight_1": "normal",
             "text_2": "guidance, support",
             "text_color_2": "#106572",
             "text_weight_2": "bold",
             "text_3": "and",
-            "text_color_3": "#222",
+            "text_color_3": "#222222",
             "text_weight_3": "normal",
             "text_4": "expertise",
             "text_color_4": "#106572",
             "text_weight_4": "bold",
             "text_5": "from our sales team and a quality product that reflects the high standards of your business.",
-            "text_color_5": "#222",
+            "text_color_5": "#222222",
             "text_weight_5": "normal",
             "text_6": "And with each purchase, we pay royalties to the artist to ensure their work and talent is recognised.",
             "text_color_6": "#106572",
@@ -197,9 +197,13 @@
         "column_d6DTAQ"
       ],
       "settings": {
-        "background_color": "#F7F1D5",
-        "padding_top": 36,
-        "padding_bottom": 36
+        "background_color": "#f7f1d5"
+      }
+    },
+    "custom_products_cards_t3VLJY": {
+      "type": "custom-products-cards",
+      "settings": {
+        "heading_text": "Customize now"
       }
     }
   },
@@ -207,6 +211,7 @@
     "image_banner",
     "rich_text_bk7Yke",
     "multicolumn_JCfPQk",
-    "custom_image_multicolumn_UHeYUR"
+    "custom_image_multicolumn_UHeYUR",
+    "custom_products_cards_t3VLJY"
   ]
 }
