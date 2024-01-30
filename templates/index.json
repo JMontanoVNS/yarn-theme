@@ -392,6 +392,48 @@
       ],
       "settings": {
       }
+    },
+    "custom_collage_ByxnEF": {
+      "type": "custom-collage",
+      "blocks": {
+        "card_9dGAzU": {
+          "type": "card",
+          "settings": {
+            "card_text": "Our services",
+            "card_link": ""
+          }
+        },
+        "card_hHCJtt": {
+          "type": "card",
+          "settings": {
+            "card_text": "Artists",
+            "card_link": ""
+          }
+        },
+        "card_WR3NVk": {
+          "type": "card",
+          "settings": {
+            "card_text": "",
+            "card_link": ""
+          }
+        },
+        "card_U8W8NX": {
+          "type": "card",
+          "settings": {
+            "card_text": "",
+            "card_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_9dGAzU",
+        "card_hHCJtt",
+        "card_WR3NVk",
+        "card_U8W8NX"
+      ],
+      "settings": {
+        "card_fade": 0
+      }
     }
   },
   "order": [
@@ -402,6 +444,7 @@
     "custom_products_cards_QVXNqa",
     "custom_about_EYrFmX",
     "custom_ordering_process_KMW3qi",
-    "custom_other_ways_wEGHHd"
+    "custom_other_ways_wEGHHd",
+    "custom_collage_ByxnEF"
   ]
 }
