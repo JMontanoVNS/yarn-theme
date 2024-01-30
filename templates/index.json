@@ -315,8 +315,8 @@
         "column_VrxUVh": {
           "type": "column",
           "settings": {
-            "step_text": "",
-            "step_title": ""
+            "step_text": "STEP ONE",
+            "step_title": "Upload logo"
           }
         },
         "column_47zN9w": {
