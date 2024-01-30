@@ -269,6 +269,19 @@
             "heading_block_color_4": "#9D2B2B"
           }
         },
+        "heading_nh8cbE": {
+          "type": "heading",
+          "settings": {
+            "heading_block_1": "With every purchase you make,",
+            "heading_block_color_1": "#222222",
+            "heading_block_2": "a portion of the royalties directly benefits the artist,",
+            "heading_block_color_2": "#9d2b2b",
+            "heading_block_3": "allowing you to not only promote your brand but also",
+            "heading_block_color_3": "#222222",
+            "heading_block_4": "contribute positively to the community.",
+            "heading_block_color_4": "#9D2B2B"
+          }
+        },
         "button_67aLHe": {
           "type": "button",
           "settings": {
@@ -289,6 +302,7 @@
       "block_order": [
         "pill_WEgVcU",
         "heading_hgeVWE",
+        "heading_nh8cbE",
         "button_67aLHe",
         "image_picker_exmMq6"
       ],
