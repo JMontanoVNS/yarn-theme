@@ -308,6 +308,42 @@
       ],
       "settings": {
       }
+    },
+    "custom_ordering_process_KMW3qi": {
+      "type": "custom-ordering-process",
+      "blocks": {
+        "column_VrxUVh": {
+          "type": "column",
+          "settings": {
+            "step_text": "",
+            "step_title": ""
+          }
+        },
+        "column_47zN9w": {
+          "type": "column",
+          "settings": {
+            "step_text": "",
+            "step_title": ""
+          }
+        },
+        "column_d4nYEb": {
+          "type": "column",
+          "settings": {
+            "step_text": "",
+            "step_title": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_VrxUVh",
+        "column_47zN9w",
+        "column_d4nYEb"
+      ],
+      "settings": {
+        "section_title": "How is the ordering process?",
+        "section_description": "The process is quick, easy, and has no extra costs: Simply upload your logo and our Design team will create a mock-up for your approval. Once we get the OK from you productionwill begin!",
+        "background_color": "#F7F1D5"
+      }
     }
   },
   "order": [
@@ -316,6 +352,7 @@
     "multicolumn_JCfPQk",
     "custom_image_multicolumn_UHeYUR",
     "custom_products_cards_QVXNqa",
-    "custom_about_EYrFmX"
+    "custom_about_EYrFmX",
+    "custom_ordering_process_KMW3qi"
   ]
 }
