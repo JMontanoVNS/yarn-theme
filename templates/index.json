@@ -244,6 +244,56 @@
       "settings": {
         "heading_text": "Customize now"
       }
+    },
+    "custom_about_EYrFmX": {
+      "type": "custom-about",
+      "blocks": {
+        "pill_WEgVcU": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "GIVING BACK",
+            "pill_color": "#106572",
+            "pill_text_color": "#FFFFFF"
+          }
+        },
+        "heading_hgeVWE": {
+          "type": "heading",
+          "settings": {
+            "heading_block_1": "At Yarn Corp, we are firm believers in ethical sourcing and supporting the artists whose work we proudly display.",
+            "heading_block_color_1": "#222222",
+            "heading_block_2": "",
+            "heading_block_color_2": "#000000",
+            "heading_block_3": "",
+            "heading_block_color_3": "#9D2B2B",
+            "heading_block_4": "",
+            "heading_block_color_4": "#9D2B2B"
+          }
+        },
+        "button_67aLHe": {
+          "type": "button",
+          "settings": {
+            "button_label": "Button label",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_color": "#F7C156",
+            "button_text_color": "#000000",
+            "button_font_weight": "bold"
+          }
+        },
+        "image_picker_exmMq6": {
+          "type": "image_picker",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "pill_WEgVcU",
+        "heading_hgeVWE",
+        "button_67aLHe",
+        "image_picker_exmMq6"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -251,6 +301,7 @@
     "rich_text_bk7Yke",
     "multicolumn_JCfPQk",
     "custom_image_multicolumn_UHeYUR",
-    "custom_products_cards_QVXNqa"
+    "custom_products_cards_QVXNqa",
+    "custom_about_EYrFmX"
   ]
 }
