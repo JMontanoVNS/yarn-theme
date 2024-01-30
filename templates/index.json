@@ -329,8 +329,8 @@
         "column_d4nYEb": {
           "type": "column",
           "settings": {
-            "step_text": "",
-            "step_title": ""
+            "step_text": "STEP THREE",
+            "step_title": "Receive Order"
           }
         }
       },
