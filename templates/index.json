@@ -344,6 +344,54 @@
         "section_description": "The process is quick, easy, and has no extra costs: Simply upload your logo and our Design team will create a mock-up for your approval. Once we get the OK from you productionwill begin!",
         "background_color": "#F7F1D5"
       }
+    },
+    "custom_other_ways_wEGHHd": {
+      "type": "custom-other-ways",
+      "blocks": {
+        "pill_EgARBK": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "OTHER WAYS TO CUSTOMIZE",
+            "pill_color": "#F7F1D5",
+            "pill_text_color": "#222222"
+          }
+        },
+        "description_JmUAhE": {
+          "type": "description",
+          "settings": {
+            "description_text": "Like the product but want it with\nyour own artwork?"
+          }
+        },
+        "description_aBCJRe": {
+          "type": "description",
+          "settings": {
+            "description_text": "Like the product but want to create\nbespoke art with one of our artists?"
+          }
+        },
+        "text_w93TBN": {
+          "type": "text",
+          "settings": {
+            "big_text": "WE CAN DO THAT"
+          }
+        },
+        "button_QAkEcf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Want my own artwork",
+            "button_link": "",
+            "button_color": "#F7C156"
+          }
+        }
+      },
+      "block_order": [
+        "pill_EgARBK",
+        "description_JmUAhE",
+        "description_aBCJRe",
+        "text_w93TBN",
+        "button_QAkEcf"
+      ],
+      "settings": {
+      }
     }
   },
   "order": [
@@ -353,6 +401,7 @@
     "custom_image_multicolumn_UHeYUR",
     "custom_products_cards_QVXNqa",
     "custom_about_EYrFmX",
-    "custom_ordering_process_KMW3qi"
+    "custom_ordering_process_KMW3qi",
+    "custom_other_ways_wEGHHd"
   ]
 }
