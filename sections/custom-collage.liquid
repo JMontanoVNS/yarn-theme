@@ -1,0 +1,87 @@
+{{ 'custom-collage.css' | asset_url | stylesheet_tag }}
+
+<div class="collage-main-container shopify-section">
+  <div class="collage-images-container">
+    {% for block in section.blocks %}
+      {% if block.settings.background_image %}
+        <div style="background: center / cover no-repeat url('{{ block.settings.background_image | image_url: width: 450 }}');" class="collage-card">
+          <div class="collage-card-fade" style="opacity: {{ section.settings.card_fade }}%"></div>
+          <a
+            class="collage-card-text"
+            {% if block.settings.card_link == blank %}
+            role="link"
+            aria-disabled="true"
+            {% else %}
+            href="{{ block.settings.card_link }}"
+            {% endif %}>{{ block.settings.card_text }}</a>
+        {% comment %} <span class="collage-card-text"></span> {% endcomment %}
+        </div>
+      {% else %}
+        <div class="collage-empty-card">
+          Collage card
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Collage",
+    "class": "section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "range",
+        "id": "card_fade",
+        "label": "Card fade",
+        "min": 0,
+        "max": 100,
+        "default": 0,
+        "step": 1,
+        "unit": "%"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "Collage card",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "background_image",
+            "label": "Card background image"
+          }, {
+            "type": "text",
+            "id": "card_text",
+            "label": "Card text"
+          }, {
+            "type": "url",
+            "id": "card_link",
+            "label": "Card link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collage",
+        "blocks": [
+          {
+            "type": "card"
+          }, {
+            "type": "card"
+          }, {
+            "type": "card"
+          }, {
+            "type": "card"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
