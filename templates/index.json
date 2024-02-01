@@ -199,12 +199,252 @@
       "settings": {
         "background_color": "#f7f1d5"
       }
+    },
+    "custom_products_cards_QVXNqa": {
+      "type": "custom-products-cards",
+      "blocks": {
+        "column_rdpUM6": {
+          "type": "column",
+          "settings": {
+            "product_text": ""
+          }
+        },
+        "column_3L9DnQ": {
+          "type": "column",
+          "settings": {
+            "product_text": ""
+          }
+        },
+        "column_WjWrNh": {
+          "type": "column",
+          "settings": {
+            "product_text": ""
+          }
+        },
+        "column_6KbAzK": {
+          "type": "column",
+          "settings": {
+            "product_text": ""
+          }
+        },
+        "column_Gr9y93": {
+          "type": "column",
+          "settings": {
+            "product_text": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_rdpUM6",
+        "column_3L9DnQ",
+        "column_WjWrNh",
+        "column_6KbAzK",
+        "column_Gr9y93"
+      ],
+      "settings": {
+        "heading_text": "Customize now"
+      }
+    },
+    "custom_about_EYrFmX": {
+      "type": "custom-about",
+      "blocks": {
+        "pill_WEgVcU": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "GIVING BACK",
+            "pill_color": "#106572",
+            "pill_text_color": "#FFFFFF"
+          }
+        },
+        "heading_hgeVWE": {
+          "type": "heading",
+          "settings": {
+            "heading_block_1": "At Yarn Corp, we are firm believers in ethical sourcing and supporting the artists whose work we proudly display.",
+            "heading_block_color_1": "#222222",
+            "heading_block_2": "",
+            "heading_block_color_2": "#000000",
+            "heading_block_3": "",
+            "heading_block_color_3": "#9D2B2B",
+            "heading_block_4": "",
+            "heading_block_color_4": "#9D2B2B"
+          }
+        },
+        "heading_nh8cbE": {
+          "type": "heading",
+          "settings": {
+            "heading_block_1": "With every purchase you make,",
+            "heading_block_color_1": "#222222",
+            "heading_block_2": "a portion of the royalties directly benefits the artist,",
+            "heading_block_color_2": "#9d2b2b",
+            "heading_block_3": "allowing you to not only promote your brand but also",
+            "heading_block_color_3": "#222222",
+            "heading_block_4": "contribute positively to the community.",
+            "heading_block_color_4": "#9D2B2B"
+          }
+        },
+        "button_67aLHe": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn more",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_color": "#F7C156",
+            "button_text_color": "#000000",
+            "button_font_weight": "bold"
+          }
+        },
+        "image_picker_exmMq6": {
+          "type": "image_picker",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "pill_WEgVcU",
+        "heading_hgeVWE",
+        "heading_nh8cbE",
+        "button_67aLHe",
+        "image_picker_exmMq6"
+      ],
+      "settings": {
+      }
+    },
+    "custom_ordering_process_KMW3qi": {
+      "type": "custom-ordering-process",
+      "blocks": {
+        "column_VrxUVh": {
+          "type": "column",
+          "settings": {
+            "step_text": "STEP ONE",
+            "step_title": "Upload logo"
+          }
+        },
+        "column_47zN9w": {
+          "type": "column",
+          "settings": {
+            "step_text": "STEP TWO",
+            "step_title": "Approve Mockup"
+          }
+        },
+        "column_d4nYEb": {
+          "type": "column",
+          "settings": {
+            "step_text": "STEP THREE",
+            "step_title": "Receive Order"
+          }
+        }
+      },
+      "block_order": [
+        "column_VrxUVh",
+        "column_47zN9w",
+        "column_d4nYEb"
+      ],
+      "settings": {
+        "section_title": "How is the ordering process?",
+        "section_description": "The process is quick, easy, and has no extra costs: Simply upload your logo and our Design team will create a mock-up for your approval. Once we get the OK from you productionwill begin!",
+        "background_color": "#F7F1D5"
+      }
+    },
+    "custom_other_ways_wEGHHd": {
+      "type": "custom-other-ways",
+      "blocks": {
+        "pill_EgARBK": {
+          "type": "pill",
+          "settings": {
+            "pill_text": "OTHER WAYS TO CUSTOMIZE",
+            "pill_color": "#F7F1D5",
+            "pill_text_color": "#222222"
+          }
+        },
+        "description_JmUAhE": {
+          "type": "description",
+          "settings": {
+            "description_text": "Like the product but want it with\nyour own artwork?"
+          }
+        },
+        "description_aBCJRe": {
+          "type": "description",
+          "settings": {
+            "description_text": "Like the product but want to create\nbespoke art with one of our artists?"
+          }
+        },
+        "text_w93TBN": {
+          "type": "text",
+          "settings": {
+            "big_text": "WE CAN DO THAT"
+          }
+        },
+        "button_QAkEcf": {
+          "type": "button",
+          "settings": {
+            "button_label": "Want my own artwork",
+            "button_link": "",
+            "button_color": "#F7C156"
+          }
+        }
+      },
+      "block_order": [
+        "pill_EgARBK",
+        "description_JmUAhE",
+        "description_aBCJRe",
+        "text_w93TBN",
+        "button_QAkEcf"
+      ],
+      "settings": {
+      }
+    },
+    "custom_collage_ByxnEF": {
+      "type": "custom-collage",
+      "blocks": {
+        "card_9dGAzU": {
+          "type": "card",
+          "settings": {
+            "card_text": "Our services",
+            "card_link": ""
+          }
+        },
+        "card_hHCJtt": {
+          "type": "card",
+          "settings": {
+            "card_text": "Artists",
+            "card_link": ""
+          }
+        },
+        "card_WR3NVk": {
+          "type": "card",
+          "settings": {
+            "card_text": "Industry",
+            "card_link": ""
+          }
+        },
+        "card_U8W8NX": {
+          "type": "card",
+          "settings": {
+            "card_text": "Lookbooks",
+            "card_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "card_9dGAzU",
+        "card_hHCJtt",
+        "card_WR3NVk",
+        "card_U8W8NX"
+      ],
+      "settings": {
+        "card_fade": 0
+      }
     }
   },
   "order": [
     "image_banner",
     "rich_text_bk7Yke",
     "multicolumn_JCfPQk",
-    "custom_image_multicolumn_UHeYUR"
+    "custom_image_multicolumn_UHeYUR",
+    "custom_products_cards_QVXNqa",
+    "custom_about_EYrFmX",
+    "custom_ordering_process_KMW3qi",
+    "custom_other_ways_wEGHHd",
+    "custom_collage_ByxnEF"
   ]
 }
