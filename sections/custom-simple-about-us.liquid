@@ -1,0 +1,127 @@
+{{ 'custom-simple-about-us.css' | asset_url | stylesheet_tag }}
+
+<div class="simple-about-us-main-container shopify-section">
+  <div class="simple-about-us-content-container">
+    {% for block in section.blocks %}
+      {% if block.settings.background_video %}
+        <div class="simple-about-us-background-fade" style="opacity: {{ block.settings.section_background_fade }}%"></div>
+        {{ block.settings.background_video | video_tag: autoplay: true, loop: true, muted: true, controls: false, class: 'simple-about-us-video' }}
+        <div class="simple-about-us-text-container">
+          <span class="simple-about-us-heading">{{ block.settings.section_heading }}</span>
+          <div class="simple-about-us-link-container">
+            <a
+              class="simple-about-us-link"
+              {% if block.settings.section_link == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ block.settings.section_link }}"
+              {% endif %}>{{ block.settings.section_link_label }}</a>
+            <div class="simple-about-us-link-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="7"
+                height="12"
+                viewBox="0 0 7 12"
+                fill="none">
+                <path
+                  d="M0.650391 1.49341L5.14907 5.99209L0.650391 10.4909"
+                  stroke="white"
+                  stroke-width="1.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      {% else %}
+        <div class="simple-about-us-empty-card">
+          About us card
+          <div class="simple-about-us-link-container">
+            <a
+              class="simple-about-us-link"
+              {% if block.settings.section_link == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ block.settings.section_link }}"
+              {% endif %}>Link</a>
+            <div class="simple-about-us-link-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="7"
+                height="12"
+                viewBox="0 0 7 12"
+                fill="none">
+                <path
+                  d="M0.650391 1.49341L5.14907 5.99209L0.650391 10.4909"
+                  stroke="white"
+                  stroke-width="1.5" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Simple About us",
+    "class": "section",
+    "tag": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [],
+    "blocks": [
+      {
+        "type": "card",
+        "name": "About us Card",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "video",
+            "id": "background_video",
+            "label": "Section background video"
+          },
+          {
+            "type": "range",
+            "id": "section_background_fade",
+            "label": "Background fade",
+            "min": 0,
+            "max": 100,
+            "default": 70,
+            "step": 1,
+            "unit": "%"
+          },
+          {
+            "type": "text",
+            "id": "section_heading",
+            "label": "Heading",
+            "default": "About us"
+          },
+          {
+            "type": "text",
+            "id": "section_link_label",
+            "label": "Link label",
+            "default": "Link label"
+          }, {
+            "type": "url",
+            "id": "section_link",
+            "label": "Link"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Simple About us",
+        "blocks": [
+          {
+            "type": "card"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}
