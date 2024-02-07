@@ -1,0 +1,141 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'custom-partners-slideshow.css' | asset_url | stylesheet_tag }}
+
+
+<div class="partners-slideshow-main-container shopify-section">
+  <slideshow-component
+    class="slider-mobile-gutter"
+    role="region"
+    aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+    aria-label="{{ section.settings.accessibility_info | escape }}">
+    <div class="partners-slideshow-content-container">
+      <span class="partners-slideshow-title">
+        {% if section.settings.section_title == blank %}
+          TITLE
+        {% else %}
+          {{ section.settings.section_title }}
+        {% endif %}
+      </span>
+      <div class="partners-slideshow-slider-container">
+        <button
+          type="button"
+          class="partners-slideshow-slider-button slider-button slider-button--prev"
+          name="previous"
+          aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
+          aria-controls="Slider-{{ section.id }}">
+          {% render 'icon-caret' %}
+        </button>
+        <div
+          class="partners-slideshow-slider-banner slideshow banner grid grid--1-col slider slider--everywhere{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          id="Slider-{{ section.id }}"
+          aria-live="polite"
+          aria-atomic="true">
+          {%- for block in section.blocks -%}
+            <div
+              style="width: {{ block.settings.slider_image_width }}; height: {{ block.settings.slider_image_height }};"
+              class="slideshow__slide slider__slide"
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              {{ block.shopify_attributes }}
+              role="group"
+              aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+              aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+              tabindex="-1">
+              <div class="partners-slideshow-slider-item-image slideshow__media banner__media media{% if block.settings.image == blank %} placeholder{% endif %}">
+                {%- if block.settings.image -%}
+                  {{ block.settings.image | image_url: width: 3840 | image_tag: loading: 'lazy' }}
+                {%- else -%}
+                  {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+                  {%- if placeholder_slide == 1 -%}
+                    {{ 'hero-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- else -%}
+                    {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+                  {%- endif -%}
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+        <button
+          type="button"
+          class="partners-slideshow-slider-button slider-button slider-button--next"
+          name="next"
+          aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
+          aria-controls="Slider-{{ section.id }}">
+          {% render 'icon-caret' %}
+        </button>
+      </div>
+    </div>
+  </slideshow-component>
+</div>
+
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Partners Slideshow",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Title",
+        "default": "Our community partners"
+      }, {
+        "type": "header",
+        "content": "t:sections.slideshow.settings.accessibility.content"
+      }, {
+        "type": "text",
+        "id": "accessibility_info",
+        "label": "t:sections.slideshow.settings.accessibility.label",
+        "info": "t:sections.slideshow.settings.accessibility.info",
+        "default": "Slideshow about our brand"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "t:sections.slideshow.blocks.slide.name",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "t:sections.slideshow.blocks.slide.settings.image.label"
+          }, {
+            "type": "number",
+            "id": "slider_image_width",
+            "label": "Image width",
+            "info": "Value represented in pixels",
+            "default": 60
+          }, {
+            "type": "number",
+            "id": "slider_image_height",
+            "label": "Image height",
+            "info": "Value represented in pixels",
+            "default": 60
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Partners Slideshow",
+        "blocks": [
+          {
+            "type": "slide"
+          }, {
+            "type": "slide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

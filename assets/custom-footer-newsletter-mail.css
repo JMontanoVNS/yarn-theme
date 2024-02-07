@@ -1,0 +1,119 @@
+.footer-newsletter-mail-main-container {
+    padding: 8px 5.12% 0 5.12%;
+}
+
+.footer-newsletter-mail-content-container {
+    border-radius: 20px;
+    height: 416px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px;
+    padding: 60px 17.14%;
+}
+
+.newsletter-mail-heading-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.newsletter-mail-heading {
+    margin: 0;
+    font-size: 28px;
+    line-height: 40px;
+    color: #FFF;
+    font-weight: 700;
+    text-align: center;
+}
+
+.newsletter-mail-description {
+    margin: 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: #FFF;
+    font-weight: 400;
+    text-align: center;
+}
+
+.footer-newsletter-mail-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+}
+
+.footer-newsletter-mail-input {
+    border-radius: 20px; 
+    padding: 19px, 20px, 19px, 20px; 
+    height: 56px;
+}
+
+.footer-newsletter-mail-label {
+    font-size: 14px;
+    line-height: 2.5;
+    font-weight: 500;
+}
+
+.footer-newsletter-mail-button {
+    width: 100%;
+    background: #F7C156;
+    border-radius: 12px;
+    height: 56px;
+    padding: 12px 24px;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #222222;
+}
+
+@media screen and (min-width: 750px) {
+    .footer-newsletter-mail-main-container {
+        padding: 0 1.11%;
+    }
+
+    .footer-newsletter-mail-content-container {
+        border-radius: 20px;
+        height: 416px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 28px;
+        padding: 60px 17.14%;
+    }
+
+    .newsletter-mail-heading {
+        font-size: 34px;
+        line-height: 46px;
+    }
+
+    .newsletter-mail-description {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .footer-newsletter-mail-form {
+        flex-direction: row;
+        width: 73.32%;
+    }
+
+    .footer-newsletter-mail-input-container {
+        width: 100%;
+        max-width: 302.83px;
+    }
+
+    .footer-newsletter-mail-input {
+        width: 100%;
+    }
+
+    .footer-newsletter-mail-button {
+        width: fit-content;
+    }
+}

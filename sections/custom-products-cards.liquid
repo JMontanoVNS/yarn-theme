@@ -5,17 +5,28 @@
 
   <div class="cards-container">
     {% for block in section.blocks %}
-      {% if block.settings.background_image %}
-        <div style="background: center / cover no-repeat url('{{ block.settings.background_image | image_url: width: 1000 }}');" class="product-card">
+      {% if block.settings.store_collection %}
+        <a
+          {% if block.settings.store_collection.url == blank %}
+          role="link"
+          aria-disabled="true"
+          {% else %}
+          href="{{ block.settings.store_collection.url }}"
+          {% endif %}>
           <div class="card-content">
-            <div class="product-cards-image">
-              {% if block.settings.product_image %}
-                {{ block.settings.product_image | image_url: width: 450 | image_tag: loading: 'lazy' }}
+            {% if block.settings.background_image %}
+              <img class="card-content-background" src="{{ block.settings.background_image | image_url: width: 450 | image_tag: loading: 'lazy' }}">
+            {% else %}
+              <span class="card-content-no-background"></span>
+            {% endif %}
+            <div class="product-card-collection-image">
+              {% if block.settings.store_collection.image %}
+                {{ block.settings.store_collection.image | image_url: width: 450 | image_tag: loading: 'lazy' }}
               {% endif %}
             </div>
-            <p>{{ block.settings.product_text }}</p>
+            <p>{{ block.settings.store_collection.title }}</p>
           </div>
-        </div>
+        </a>
       {% else %}
         <div class="product-card">
           Product card
@@ -27,7 +38,7 @@
 
 {% schema %}
   {
-    "name": "Products cards",
+    "name": "Collections cards",
     "class": "section",
     "tag": "section",
     "disabled_on": {
@@ -43,7 +54,7 @@
     ],
     "blocks": [
       {
-        "type": "column",
+        "type": "card",
         "name": "Product card",
         "settings": [
           {
@@ -51,34 +62,30 @@
             "id": "background_image",
             "label": "Card background image"
           }, {
-            "type": "image_picker",
-            "id": "product_image",
-            "label": "Card product image"
-          }, {
-            "type": "text",
-            "id": "product_text",
-            "label": "Card text"
+            "type": "collection",
+            "id": "store_collection",
+            "label": "Select collection"
           }
         ]
       }
     ],
     "presets": [
       {
-        "name": "Products cards",
+        "name": "Collection cards",
         "blocks": [
           {
-            "type": "column"
+            "type": "card"
           },
           {
-            "type": "column"
+            "type": "card"
           },
           {
-            "type": "column"
+            "type": "card"
           },
           {
-            "type": "column"
+            "type": "card"
           }, {
-            "type": "column"
+            "type": "card"
           }
         ]
       }
