@@ -1,0 +1,93 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'custom-collections-slideshow.css' | asset_url | stylesheet_tag }}
+
+<script>
+    // let collectionButton = document.getElementsByTagName('collections-slideshow-slider-item');
+    // console.log(collectionButton);
+</script>
+
+
+<div class="collections-slideshow-main-container shopify-section">
+  <div class="collections-slideshow-header">
+    <p class="collections-slideshow-heading">{{ section.settings.heading }}</p>
+    <nav class="collections-slideshow-nav">
+      <slideshow-component
+        class="slider-mobile-gutter"
+        role="region"
+        aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+        aria-label="{{ section.settings.accessibility_info | escape }}">
+        <div
+          class="collections-slideshow-slider-banner slideshow banner grid grid--1-col slider slider--everywhere{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+          id="Slider-{{ section.id }}"
+          aria-live="polite"
+          aria-atomic="true">
+          {%- for block in section.blocks -%}
+            {% if block.settings.store_collection %}
+              <div
+                class="collections-slideshow-slider-item slideshow__slide slider__slide"
+                id="Slide-{{ section.id }}-{{ forloop.index }}"
+                {{ block.shopify_attributes }}
+                role="group"
+                aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+                aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+                tabindex="-1">
+                {{ block.settings.store_collection.title }}
+              </div>
+            {% endif %}
+          {%- endfor -%}
+        </div>
+      </slideshow-component>
+    </nav>
+  </div>
+  <div class="collections-slideshow-cards-container">
+    <div class="collections-slideshow-card"></div>
+  </div>
+</div>
+
+<script src="{{ 'custom-collections-slideshow.js' | asset_url }}"></script>
+{%- if request.design_mode -%}
+  <script src="{{ 'theme-editor.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{% schema %}
+  {
+    "name": "Collections Slideshow",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section heading"
+      }, {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "collection",
+            "id": "store_collection",
+            "label": "Select collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collections Slideshow",
+        "blocks": []
+      }
+    ]
+  }
+{% endschema %}

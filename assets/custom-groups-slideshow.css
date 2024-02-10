@@ -1,0 +1,127 @@
+.groups-slideshow-main-container {
+    padding: 48px 5.12% 40px 5.12%;
+}
+
+.groups-slideshow-content-container {
+    height: 500px;
+}
+
+.groups-slideshow-slider-container {
+    height: 100%;
+    width: 100%;
+}
+
+.groups-slideshow-slider-banner {
+    height: 100%;
+    width: 100%;
+    gap: 12px !important;
+}
+
+.groups-slideshow-slider-banner > div {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.groups-slideshow-slider-item-image-opacity {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #222222;
+    z-index: 1;
+}
+
+.groups-slideshow-slider-item-image {
+    background-color: transparent;
+    /* transform: rotate(-35deg); */
+}
+
+.groups-slideshow-slider-item-image img {
+    object-fit: cover;
+}
+
+.groups-slideshow-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    z-index: 3;
+    height: 100%;
+}
+
+.groups-slideshow-heading {
+    position: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.groups-slideshow-link-container {
+    display: flex;
+    max-width: 89.8px;
+    align-items: center;
+    gap: -0.2px;
+}
+
+.groups-slideshow-link {
+    position: inherit;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #FFF;
+    text-wrap: nowrap;
+    margin-left: 2.99%;
+    text-decoration: none;
+}
+
+.groups-slideshow-link-icon {
+    display: flex;
+    width: 24px;
+    padding: 7.501px 9.751px;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.groups-slideshow-link-icon svg {
+    width: 4.499px;
+    height: 8.997px;
+    flex-shrink: 0;
+}
+
+.groups-slideshow-controls-container {
+    border: 1px solid pink;
+    margin-top: 16px;
+    border: none;
+}
+
+@media screen and (min-width: 750px) {
+    .groups-slideshow-main-container {
+        padding: 48px 1.11%;
+    }
+
+    .groups-slideshow-content-container {
+        height: 588px;
+        border-radius: none;
+        overflow: unset;
+    }
+
+    .groups-slideshow-controls-container {
+        display: none;
+    }
+
+    .groups-slideshow-slider-banner > div {
+        width: 49.5%;
+    }
+
+    .groups-slideshow-heading {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}

@@ -1,0 +1,57 @@
+.collections-slideshow-main-container {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+}
+
+.collections-slideshow-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+}
+
+.collections-slideshow-heading {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 79%;
+    margin: 0 auto;
+    padding: 0;
+    height: 68px;
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 700;
+    color: #222222;
+}
+
+.collections-slideshow-slider-banner {
+    gap: 42px !important;
+    padding: 0 28.20%;
+}
+
+.banner::after {
+    width: 0;
+}
+
+.active-collection {
+    color: #222222 !important;
+}
+
+.collections-slideshow-slider-item {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #808080;
+    text-transform: uppercase;
+}
+
+.collections-slideshow-cards-container {
+    border: 1px solid orange;
+    padding: 0 5.12%;
+}
