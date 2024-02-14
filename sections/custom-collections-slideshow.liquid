@@ -3,12 +3,6 @@
 {{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
 {{ 'custom-collections-slideshow.css' | asset_url | stylesheet_tag }}
 
-<script>
-    // let collectionButton = document.getElementsByTagName('collections-slideshow-slider-item');
-    // console.log(collectionButton);
-</script>
-
-
 <div class="collections-slideshow-main-container shopify-section">
   <div class="collections-slideshow-header">
     <p class="collections-slideshow-heading">{{ section.settings.heading }}</p>
@@ -41,9 +35,162 @@
       </slideshow-component>
     </nav>
   </div>
-  <div class="collections-slideshow-cards-container">
-    <div class="collections-slideshow-card"></div>
-  </div>
+
+
+  {% for collection in collections %}
+    <slideshow-component
+      style="display: none;"
+      class="slider-mobile-gutter collections-slideshow-cards-container"
+      role="region"
+      data-collection="{{ collection.handle }}"
+      aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+      aria-label="{{ section.settings.accessibility_info | escape }}">
+      <div
+        class="collections-slideshow-cards-banner slideshow banner grid grid--1-col slider slider--everywhere{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+        id="Slider-{{ section.id }}"
+        aria-live="polite"
+        aria-atomic="true">
+        {%- for product in collection.products -%}
+          <div
+            class="collections-slideshow-cards-slider-item slideshow__slide slider__slide"
+            id="Slide-{{ section.id }}-{{ forloop.index }}"
+            {{ block.shopify_attributes }}
+            role="group"
+            aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+            aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+            tabindex="-1">
+            <div class="collections-slideshow-card">
+              <div class="collections-slideshow-card-image">
+                {{ product.featured_image | image_url: width: 450 | image_tag: loading: 'lazy' }}
+                <div class="collections-slideshow-card-image-buttons">
+                  <span class="collections-slideshow-card-image-badge">
+                    <a href="">Add your logo</a>
+                  </span>
+                  <span class="collections-slideshow-card-image-preview">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      class="w-6 h-6">
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+              <div class="collections-slideshow-card-description">
+                <p>{{ product.title }}</p>
+                <div class="collections-slideshow-card-price">
+                  <div class="collections-slideshow-card-price-discount">
+                    <span class="collections-slideshow-card-price-discount-current">From
+                      <b>{{ product.price | money }}</b>
+                    </span>
+                    <span class="collections-slideshow-card-price-discount-original">{{ product.compare_at_price | money }}</span>
+                  </div>
+                  <div class="collections-slideshow-card-price-quantity">
+                    <span class="collections-slideshow-card-price-percentage">-21%</span>
+                    <span class="collections-slideshow-card-price-qty">Min Qty: 15</span>
+                  </div>
+                </div>
+                <a class="collections-slideshow-card-button">
+                  <span class="collections-slideshow-card-button-label">Add your logo</span>
+                  <span class="collections-slideshow-card-button-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="7"
+                      height="12"
+                      viewBox="0 0 7 12"
+                      fill="none">
+                      <path
+                        d="M0.650391 1.49341L5.14907 5.99209L0.650391 10.4909"
+                        stroke="#222222"
+                        stroke-width="1.5" />
+                    </svg>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </slideshow-component>
+  {% endfor %}
+{% comment %} {% for collection in collections %}
+                  <div
+                    style="display: none;"
+                    class="collections-slideshow-cards-container"
+                    data-collection="{{ collection.handle }}">
+                    {% for product in collection.products %}
+                      <div class="collections-slideshow-card">
+                        <div class="collections-slideshow-card-image">
+                          {{ product.featured_image | image_url: width: 450 | image_tag: loading: 'lazy' }}
+                          <div class="collections-slideshow-card-image-buttons">
+                            <span class="collections-slideshow-card-image-badge">
+                              <a href="">Add your logo</a>
+                            </span>
+                            <span class="collections-slideshow-card-image-preview">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke-width="1.5"
+                                stroke="currentColor"
+                                class="w-6 h-6">
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                              </svg>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="collections-slideshow-card-description">
+                          <p>{{ product.title }}</p>
+                          <div class="collections-slideshow-card-price">
+                            <div class="collections-slideshow-card-price-discount">
+                              <span class="collections-slideshow-card-price-discount-current">From
+                                <b>{{ product.price | money }}</b>
+                              </span>
+                              <span class="collections-slideshow-card-price-discount-original">{{ product.compare_at_price | money }}</span>
+                            </div>
+                            <div class="collections-slideshow-card-price-quantity">
+                              <span class="collections-slideshow-card-price-percentage">-21%</span>
+                              <span class="collections-slideshow-card-price-qty">Min Qty: 15</span>
+                            </div>
+                          </div>
+                          <a class="collections-slideshow-card-button">
+                            <span class="collections-slideshow-card-button-label">Add your logo</span>
+                            <span class="collections-slideshow-card-button-icon">
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="7"
+                                height="12"
+                                viewBox="0 0 7 12"
+                                fill="none">
+                                <path
+                                  d="M0.650391 1.49341L5.14907 5.99209L0.650391 10.4909"
+                                  stroke="#222222"
+                                  stroke-width="1.5" />
+                              </svg>
+                            </span>
+                          </a>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+  {% endfor %} {% endcomment %}
 </div>
 
 <script src="{{ 'custom-collections-slideshow.js' | asset_url }}"></script>

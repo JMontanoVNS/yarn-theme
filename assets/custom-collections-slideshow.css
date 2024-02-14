@@ -1,5 +1,9 @@
+.show-active-collection {
+    display: flex !important;
+}
+
 .collections-slideshow-main-container {
-    border: 1px solid red;
+    /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,9 +53,174 @@
     font-weight: 500;
     color: #808080;
     text-transform: uppercase;
+    cursor: pointer;
 }
 
+
+
 .collections-slideshow-cards-container {
-    border: 1px solid orange;
+    /* border: 1px solid orange; */
+    width: 100%;
+    display: flex;
+}
+
+.collections-slideshow-cards-banner {
+    gap: 20px !important;
     padding: 0 5.12%;
+}
+
+.collections-slideshow-card {
+    /* border: 1px solid green; */
+    width: 283px;
+}
+
+.collections-slideshow-card-image {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 449px;
+    width: inherit;
+    border-radius: 20px;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.collections-slideshow-card-image img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.collections-slideshow-card-image-buttons {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    z-index: 1;
+}
+
+.collections-slideshow-card-image-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    padding: 4px 12px;
+    background: #22222280;
+    border-radius: 12px;
+}
+
+.collections-slideshow-card-image-badge a {
+    text-decoration: none;
+    text-align: center;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #FFF;
+}
+
+.collections-slideshow-card-image-preview {
+    background: #222222;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    padding: 10px;
+}
+
+.collections-slideshow-card-description {
+    padding: 16px 0;
+}
+
+.collections-slideshow-card-description p {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #222222;
+    margin: 0;
+}
+
+.collections-slideshow-card-price {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.collections-slideshow-card-price-discount {
+    display: flex;
+    gap: 8px;
+}
+
+.collections-slideshow-card-price-discount-current {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #808080;
+}
+
+.collections-slideshow-card-price-discount-current b {
+    color: #E63217;
+}
+
+.collections-slideshow-card-price-discount-original {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    color: #808080;
+    text-decoration: line-through;
+}
+
+.collections-slideshow-card-price-quantity {
+    display: flex;
+    gap: 8px;
+}
+
+.collections-slideshow-card-price-percentage {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #FFF;
+    border-radius: 12px;
+    padding: 2px 12px;
+    height: 24px;
+    background: #106572;
+}
+
+.collections-slideshow-card-price-qty {
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+    color: #222222;
+    border-radius: 12px;
+    padding: 2px 12px;
+    height: 24px;
+    background: #F7C156;
+}
+
+.collections-slideshow-card-button {
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.collections-slideshow-card-button-label {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 700;
+    color: #222222;
+    text-align: center;
+}
+
+.collections-slideshow-card-button-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    color: #222222;
 }
