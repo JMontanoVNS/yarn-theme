@@ -1,0 +1,179 @@
+{{ 'custom-footer.css' | asset_url | stylesheet_tag }}
+{{ 'component-list-social.css' | asset_url | stylesheet_tag }}
+
+<div class="custom-footer-main-container shopify-section">
+  <div class="custom-footer-content-container" style="background: {{ section.settings.section_background_color }};">
+    <div class="custom-footer-logo">
+      {{  }}
+    </div>
+    <div class="custom-footer-links-columns">
+      {% assign column_blocks = section.blocks | where: 'type', 'column' %}
+      {% for block in column_blocks %}
+        <div class="custom-footer-column" {{ block.shopify_attributes }}>
+          {% if block.settings.column_title %}
+            <p style="color: {{ block.settings.title_color }}">{{ block.settings.column_title }}</p>
+          {% endif %}
+          {% if block.settings.column_text %}
+            <p>{{ block.settings.column_text }}</p>
+          {% else %}
+            <p>Lorem ipsum dolor...</p>
+          {% endif %}
+          {% if block.settings.column_menu %}
+            <ul>
+              {%- for link in block.settings.column_menu.links -%}
+                <li>
+                  <a href="{{ link.url }}">
+                    {{ link.title }}
+                  </a>
+                </li>
+              {%- endfor -%}
+            </ul>
+          {% else %}
+            <p>Links list</p>
+          {% endif %}
+          {% if block.settings.column_socials == true %}
+            {%- render 'social-icons'
+              , class: 'custom-footer-socials footer__list-social' -%}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    {% comment %} <div class="custom-footer-division-bar"></div> {% endcomment %}
+    <div class="custom-footer-privacy-container">
+      <div class="custom-footer-privacy">
+        {% assign privacy_blocks = section.blocks | where: 'type', 'privacy' %}
+        {% for block in privacy_blocks %}
+          {% if block.settings.link_1 %}
+            <a
+              {% if block.settings.link_1 == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ block.settings.link_1 }}"
+              {% endif %}>{{ block.settings.link_label_1 }}</a>
+          {% endif %}
+          {% if block.settings.link_2 %}
+            <a
+              {% if block.settings.link_2 == blank %}
+              role="link"
+              aria-disabled="true"
+              {% else %}
+              href="{{ block.settings.link_2 }}"
+              {% endif %}>{{ block.settings.link_label_2 }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <p class="custom-footer-copyrights">Copyright © 2023, Yarn Marketplace</p>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Yarn Footer",
+    "class": "section",
+    "enabled_on": {
+      "groups": ["footer"]
+    },
+    "tag": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "section_background_color",
+        "label": "Background color",
+        "default": "#F7F1D5"
+      }, {
+        "type": "image_picker",
+        "id": "section_logo",
+        "label": "Logo"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "column",
+        "name": "Links Column",
+        "limit": 5,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Column Header"
+          },
+          {
+            "type": "text",
+            "id": "column_title",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "title_color",
+            "label": "Title Color"
+          },
+          {
+            "type": "header",
+            "content": "Column Text"
+          }, {
+            "type": "textarea",
+            "id": "column_text",
+            "label": "Text"
+          }, {
+            "type": "header",
+            "content": "Link list"
+          }, {
+            "type": "link_list",
+            "id": "column_menu",
+            "label": "Menu"
+          }, {
+            "type": "header",
+            "content": "Social media icons"
+          }, {
+            "type": "checkbox",
+            "id": "column_socials",
+            "label": "Show icons"
+          }
+        ]
+      }, {
+        "type": "privacy",
+        "name": "Privacy and Terms",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Link #1"
+          },
+          {
+            "type": "text",
+            "id": "link_label_1",
+            "label": "Link label"
+          },
+          {
+            "type": "url",
+            "id": "link_1",
+            "label": "URL"
+          },
+          {
+            "type": "header",
+            "content": "Link #2"
+          }, {
+            "type": "text",
+            "id": "link_label_2",
+            "label": "Link label"
+          }, {
+            "type": "url",
+            "id": "link_2",
+            "label": "URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Yarn Footer",
+        "blocks": [
+          {
+            "type": "column"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

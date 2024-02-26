@@ -1,0 +1,183 @@
+{{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'component-slideshow.css' | asset_url | stylesheet_tag }}
+{{ 'custom-popular-products-slideshow.css' | asset_url | stylesheet_tag }}
+
+<div class="popular-products-slideshow-main-container shopify-section">
+  <div class="popular-products-slideshow-header">
+    <span class="popular-products-slideshow-header-pill">
+      <p>SHOP</p>
+    </span>
+    <p>Most popular products</p>
+    <a
+      {% if section.settings.section_url == blank %}
+      role="link"
+      aria-disabled="true"
+      {% else %}
+      href="{{ section.settings.section_url }}"
+      {% endif %}>View all products</a>
+  </div>
+  <slideshow-component
+    class="slider-mobile-gutter"
+    role="region"
+    aria-roledescription="{{ 'sections.slideshow.carousel' | t }}"
+    aria-label="{{ section.settings.accessibility_info | escape }}">
+    <div
+      class="popular-products-slider-banner slideshow banner grid grid--1-col slider slider--everywhere{% if section.blocks.first.settings.image == blank %} slideshow--placeholder{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+      id="Slider-{{ section.id }}"
+      aria-live="polite"
+      aria-atomic="true">
+      {%- for block in section.blocks -%}
+        {% if block.settings.store_collection %}
+          {% for product in block.settings.store_collection.products limit: 4 %}
+            <div
+              class="popular-products-cards-slider-item slideshow__slide slider__slide"
+              id="Slide-{{ section.id }}-{{ forloop.index }}"
+              {{ block.shopify_attributes }}
+              role="group"
+              aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
+              aria-label="{{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
+              tabindex="-1">
+              <div class="popular-products-card">
+                <div class="popular-products-card-image">
+                  {{ product.featured_image | image_url: width: 450 | image_tag: loading: 'lazy' }}
+                  <div class="popular-products-card-image-buttons">
+                    <span class="popular-products-card-image-badge">
+                      <a href="">Add your logo</a>
+                    </span>
+                    <span class="popular-products-card-image-preview">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="popular-products-card-description">
+                  <p>{{ product.title }}</p>
+                  <div class="popular-products-card-price">
+                    <div class="popular-products-card-price-discount">
+                      <span class="popular-products-card-price-discount-current">From
+                        <b>{{ product.price | money }}</b>
+                      </span>
+                      <span class="popular-products-card-price-discount-original">{{ product.compare_at_price | money }}</span>
+                    </div>
+                    <div class="popular-products-card-price-quantity">
+                      <span class="popular-products-card-price-percentage">-21%</span>
+                      <span class="popular-products-card-price-qty">Min Qty: 15</span>
+                    </div>
+                  </div>
+                  <div class="popular-products-card-calendar">
+                    <span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        class="w-6 h-6">
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                      </svg>
+                    </span>
+                    <p>Production time: 6 weeks or earlier</p>
+                  </div>
+                  <a class="popular-products-card-button">
+                    <span class="popular-products-card-button-label">Add your logo</span>
+                    <span class="popular-products-card-button-icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="7"
+                        height="12"
+                        viewBox="0 0 7 12"
+                        fill="none">
+                        <path
+                          d="M0.650391 1.49341L5.14907 5.99209L0.650391 10.4909"
+                          stroke="#222222"
+                          stroke-width="1.5" />
+                      </svg>
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% endif %}
+      {%- endfor -%}
+    </div>
+  </slideshow-component>
+
+
+  {%- for block in section.blocks -%}
+    {% if block.settings.store_collection %}
+      {% for product in block.settings.store_collection.products %}
+
+      {% endfor %}
+    {% endif %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+  {
+    "name": "Popular Slideshow",
+    "tag": "section",
+    "class": "section",
+    "disabled_on": {
+      "groups": ["header", "footer"]
+    },
+    "settings": [
+      {
+        "type": "header",
+        "content": "Section heading"
+      }, {
+        "type": "textarea",
+        "id": "heading",
+        "label": "Heading"
+      }, {
+        "type": "url",
+        "id": "section_url",
+        "label": "Section link"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "collection",
+        "name": "Collection",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "collection",
+            "id": "store_collection",
+            "label": "Select collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Popular Slideshow",
+        "blocks": [
+          {
+            "type": "collection"
+          }, {
+            "type": "collection"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

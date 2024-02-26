@@ -1,52 +1,70 @@
-.show-active-collection {
-    display: flex !important;
-}
-
-.collections-slideshow-main-container {
+.popular-products-slideshow-main-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     gap: 40px;
-    overflow: hidden;
+    padding: 0;
+    padding-top: 42px;
 }
 
-.collections-slideshow-header {
+.popular-products-slideshow-header {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 
-.collections-slideshow-heading {
+.popular-products-slideshow-header-pill {
     display: flex;
+    justify-content: center;
     align-items: center;
-    text-align: center;
-    width: 79%;
+    border-radius: 12px;
+    background: #106572;
+    padding: 8px 12px;
+    height: 26px;
+}
+
+.popular-products-slideshow-header-pill p {
     margin: 0 auto;
-    padding: 0;
-    height: 68px;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 500;
+    color: #FFF;
+}
+
+.popular-products-slideshow-header > p {
     font-size: 20px;
     line-height: 28px;
     font-weight: 700;
+    text-align: center;
+    margin: 0;
     color: #222222;
 }
 
-.collections-slideshow-slider-banner {
-    gap: 42px !important;
-    padding: 0 28.20%;
+.popular-products-slideshow-header > a {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    border: 1.5px solid #222222;
+    border-radius: 12px;
+    background: transparent;
+    padding: 12px 80px;
+    height: 48px;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    text-wrap: nowrap;
+    margin-top: 40px;
+    text-decoration: none;
 }
 
-.banner::after {
-    width: 0;
+.popular-products-slider-banner {
+    gap: 16px !important;
+    padding: 0 4.10%;
 }
 
-.active-collection {
-    color: #222222 !important;
-}
-
-.collections-slideshow-slider-item {
+.popular-products-slider-item {
     font-size: 13px;
     line-height: 18px;
     font-weight: 500;
@@ -55,22 +73,22 @@
     cursor: pointer;
 }
 
-.collections-slideshow-cards-container {
+.popular-products-cards-container {
     width: 100%;
     max-width: fit-content;
     display: flex;
 }
 
-.collections-slideshow-cards-banner {
-    gap: 20px !important;
+.popular-products-cards-banner {
+    gap: 16px !important;
     padding: 0 5.12%;
 }
 
-.collections-slideshow-card {
+.popular-products-card {
     width: 283px;
 }
 
-.collections-slideshow-card-image {
+.popular-products-card-image {
     position: relative;
     display: flex;
     align-items: center;
@@ -82,14 +100,14 @@
     overflow: hidden;
 }
 
-.collections-slideshow-card-image img {
+.popular-products-card-image img {
     position: absolute;
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.collections-slideshow-card-image-buttons {
+.popular-products-card-image-buttons {
     width: 100%;
     height: 100%;
     display: flex;
@@ -99,7 +117,7 @@
     z-index: 1;
 }
 
-.collections-slideshow-card-image-badge {
+.popular-products-card-image-badge {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,7 +127,7 @@
     border-radius: 12px;
 }
 
-.collections-slideshow-card-image-badge a {
+.popular-products-card-image-badge a {
     text-decoration: none;
     text-align: center;
     font-size: 13px;
@@ -118,7 +136,7 @@
     color: #FFF;
 }
 
-.collections-slideshow-card-image-preview {
+.popular-products-card-image-preview {
     background: #222222;
     color: #FFF;
     width: 40px;
@@ -127,11 +145,11 @@
     padding: 10px;
 }
 
-.collections-slideshow-card-description {
+.popular-products-card-description {
     padding: 16px 0;
 }
 
-.collections-slideshow-card-description p {
+.popular-products-card-description p {
     font-size: 14px;
     line-height: 22px;
     font-weight: 700;
@@ -139,33 +157,33 @@
     margin: 0;
 }
 
-.collections-slideshow-card-price {
+.popular-products-card-price {
     display: flex;
     flex-direction: column;
     gap: 4px;
 }
 
-.collections-slideshow-card-calendar {
+.popular-products-card-calendar {
     display: none;
 }
 
-.collections-slideshow-card-price-discount {
+.popular-products-card-price-discount {
     display: flex;
     gap: 8px;
 }
 
-.collections-slideshow-card-price-discount-current {
+.popular-products-card-price-discount-current {
     font-size: 16px;
     line-height: 22px;
     font-weight: 700;
     color: #808080;
 }
 
-.collections-slideshow-card-price-discount-current b {
+.popular-products-card-price-discount-current b {
     color: #E63217;
 }
 
-.collections-slideshow-card-price-discount-original {
+.popular-products-card-price-discount-original {
     font-size: 16px;
     line-height: 22px;
     font-weight: 500;
@@ -173,12 +191,12 @@
     text-decoration: line-through;
 }
 
-.collections-slideshow-card-price-quantity {
+.popular-products-card-price-quantity {
     display: flex;
     gap: 8px;
 }
 
-.collections-slideshow-card-price-percentage {
+.popular-products-card-price-percentage {
     font-size: 13px;
     line-height: 20px;
     font-weight: 700;
@@ -189,7 +207,7 @@
     background: #106572;
 }
 
-.collections-slideshow-card-price-qty {
+.popular-products-card-price-qty {
     font-size: 13px;
     line-height: 20px;
     font-weight: 700;
@@ -200,7 +218,7 @@
     background: #F7C156;
 }
 
-.collections-slideshow-card-button {
+.popular-products-card-button {
     height: 48px;
     display: flex;
     justify-content: center;
@@ -208,7 +226,7 @@
     gap: 4px;
 }
 
-.collections-slideshow-card-button-label {
+.popular-products-card-button-label {
     font-size: 14px;
     line-height: 22px;
     font-weight: 700;
@@ -216,7 +234,7 @@
     text-align: center;
 }
 
-.collections-slideshow-card-button-icon {
+.popular-products-card-button-icon {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -225,7 +243,7 @@
     color: #222222;
 }
 
-.collections-slideshow-no-product-card {
+.popular-products-no-product-card {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -237,46 +255,53 @@
     text-align: center;
 }
 
-@media screen and (min-width: 990px) {
-    .collections-slideshow-main-container {
-        padding: 0 1.11%;
+@media screen and (min-width: 750px) {
+    .popular-products-slideshow-main-container {
+        flex-direction: row;
+        gap: 40px;
+        padding: 48px 1.11% 48px 3.61%;
+        overflow: auto;
     }
 
-    .collections-slideshow-heading {
-        font-size: 24px;
-        line-height: 34px;
-    }
-
-    .collections-slideshow-slider-banner {
-        padding: 0;
-    }
-
-    .collections-slideshow-slider-item {
-        font-size: 14px;
-    }
-
-    .collections-slideshow-cards-banner {
-        display: grid;
-        grid-template-columns: repeat(4, 343px);
-        gap: 12px !important;
-        padding: 0;
-    }
-
-    .collections-slideshow-card {
-        width: 100%;
-    }
-
-    .collections-slideshow-card-image-preview {
+    .popular-products-slideshow-main-container::-webkit-scrollbar {
         display: none;
     }
 
-    .collections-slideshow-card-price {
+    .popular-products-slideshow-header {
+        align-items: flex-start;
+        gap: 0;
+    }
+
+    .popular-products-slideshow-header > p {
+        font-size: 34px;
+        line-height: 46px;
+        text-align: left;
+        margin-top: 16px;
+    }
+
+    .popular-products-slideshow-header > a {
+        display: flex;
+    }
+
+    .popular-products-slider-banner {
+        padding: 0;
+    }
+
+    .popular-products-card {
+        width: 343px;
+    }
+
+    .popular-products-card-image-preview {
+        display: none;
+    }
+
+    .popular-products-card-price {
         flex-direction: row;
         justify-content: space-between;
         margin-top: 6px;
     }
 
-    .collections-slideshow-card-calendar {
+    .popular-products-card-calendar {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -284,24 +309,24 @@
         margin-top: 16px;
     }
 
-    .collections-slideshow-card-calendar span,
-    .collections-slideshow-card-calendar p {
+    .popular-products-card-calendar span,
+    .popular-products-card-calendar p {
         color: #808080;
     }
 
-    .collections-slideshow-card-calendar span {
+    .popular-products-card-calendar span {
         width: 18px;
         height: 18px;
     }
 
-    .collections-slideshow-card-calendar p {
+    .popular-products-card-calendar p {
         margin: 0;
         font-size: 14px;
         line-height: 22px;
         font-weight: 400;
     }
 
-    .collections-slideshow-card-button {
+    .popular-products-card-button {
         margin-top: 16px;
     }
 }
